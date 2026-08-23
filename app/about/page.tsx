@@ -19,8 +19,8 @@ export default function AboutPage() {
           </p>
           <p className="leading-relaxed mt-4">
             <strong>coinsjot</strong>은 이러한 시점에서 투자자들이 세금 관련 계산을 쉽고 빠르게 할 수
-            있도록 돕기 위해 만들어졌습니다. 여러 계산 도구를 한 곳에서 제공함으로써, 복잡한
-            세무 계산을 간단히 정리할 수 있도록 하는 것이 목표입니다.
+            있도록 돕기 위해 만들어졌습니다. 복잡한 세무 계산을 간단한 도구로 정리하고, 투자자가
+            스스로 상황을 파악할 수 있도록 하는 것이 목표입니다.
           </p>
         </section>
 
@@ -152,7 +152,7 @@ export default function AboutPage() {
         </section>
 
         <section className="bg-blue-50 rounded-lg p-8">
-          <h2 className="text-2xl font-bold mb-4">마지막으로</h2>
+          <h2 className="text-2xl font-bold mb-4">중요 안내</h2>
           <p className="leading-relaxed mb-4">
             coinsjot은 투자 조언이나 세무 조언을 제공하는 전문 서비스가 아닙니다. 단순히 계산을 돕는
             도구일 뿐입니다.
@@ -162,8 +162,8 @@ export default function AboutPage() {
             이용함으로써 발생하는 모든 손해에 대해서는 책임을 지지 않습니다.
           </p>
           <p className="leading-relaxed">
-            하지만 복잡한 세금 계산을 조금이라도 쉽게 만들어, 투자자 분들이 정보를 갖춘 결정을 할 수
-            있도록 돕는 것이 coinsjot의 목표입니다.
+            복잡한 세금 계산을 간단하게 만들어, 투자자 분들이 정보를 갖춘 결정을 할 수 있도록
+            돕는 것이 coinsjot의 목표입니다.
           </p>
         </section>
       </div>

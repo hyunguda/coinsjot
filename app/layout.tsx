@@ -64,7 +64,7 @@ export default function RootLayout({
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li>
                     <Link href="/calculators/deemed-acquisition-price" className="hover:text-blue-600">
-                      의제취득가액 계산기
+                      가상화폐 세금 계산기
                     </Link>
                   </li>
                 </ul>

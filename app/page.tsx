@@ -19,12 +19,12 @@ export default function Home() {
         {/* Calculator 1 */}
         <div className="border border-gray-200 rounded-lg p-8 hover:shadow-lg transition">
           <h2 className="text-2xl font-bold mb-4 text-blue-600">
-            의제취득가액 계산기
+            가상화폐 세금 계산기
           </h2>
           <p className="text-gray-600 mb-6 leading-relaxed">
-            2027년 1월부터 시행되는 가상자산 양도소득세에서 "의제취득가액 특례"를 받을 수 있는지
-            한 눈에 확인하세요. 실제 취득가액과 2026년 12월 31일 기준 시가 중 큰 금액을
-            취득가액으로 인정받는 이 특례로 얼마나 절세할 수 있는지 즉시 계산합니다.
+            2027년 1월부터 시행되는 양도소득세를 대비하세요. 보유 중인 가상화폐의 예상 세액을
+            즉시 계산하고, 절세 방법을 확인할 수 있습니다. 2026년 12월 31일 이전에 매수한
+            코인이라면 특별한 절세 혜택이 있는지 확인해보세요.
           </p>
           <Link
             href="/calculators/deemed-acquisition-price"

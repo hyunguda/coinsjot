@@ -2,10 +2,10 @@ import { Metadata } from "next";
 import { DeemedAcquisitionCalculator } from "@/app/components/DeemedAcquisitionCalculator";
 
 export const metadata: Metadata = {
-  title: "의제취득가액 계산기 | coinsjot",
+  title: "가상화폐 세금 계산기 | coinsjot",
   description:
-    "2027년 시행되는 가상자산 양도소득세의 의제취득가액 특례를 적용했을 때 절세 효과를 즉시 계산하세요. 실제 취득가액과 연말 시가를 비교하여 어느 것이 유리한지 확인할 수 있습니다.",
-  keywords: "의제취득가액, 양도소득세, 코인세금, 계산기, 절세",
+    "2027년 시행되는 가상화폐 양도소득세를 쉽게 계산하세요. 보유 코인의 세금 부담을 즉시 시뮬레이션하고 절세 방안을 확인할 수 있습니다.",
+  keywords: "가상화폐 세금, 코인 세금, 양도소득세, 계산기, 절세",
 };
 
 export default function DeemedAcquisitionPage() {
@@ -14,15 +14,14 @@ export default function DeemedAcquisitionPage() {
       {/* Header */}
       <div className="mb-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          의제취득가액 계산기
+          가상화폐 세금 계산기
         </h1>
         <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-          2027년 1월 1일부터 시행되는 가상자산 양도소득세 제도에서 핵심은 "의제취득가액 특례"입니다.
+          2027년 1월 1일부터 시행되는 가상화폐 양도소득세를 쉽게 계산하세요.
           <br />
-          2026년 12월 31일 이전에 보유한 코인은 실제 취득가액과 연말 시가 중 <strong>큰 금액</strong>을
-          취득가액으로 인정받을 수 있습니다.
+          보유 코인의 세금 부담을 즉시 확인하고, 2026년 12월 31일 이전에 매수한 코인이라면
           <br />
-          이 계산기로 당신의 포지션에서 이 특례가 얼마나 절세 효과를 줄 수 있는지 즉시 확인하세요.
+          <strong>절세 가능한 방법</strong>을 찾을 수 있습니다.
         </p>
 
         <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
