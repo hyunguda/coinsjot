@@ -22,6 +22,9 @@ export const metadata: Metadata = {
     description: "코인 투자자를 위한 양도소득세, 손익통산, 선물 청산가 계산 도구 모음",
     type: "website",
   },
+  verification: {
+    google: "3aXt8q2Kmr_Wre3yGvGHh9K4Js3vUwzd1-6HERwQrCw",
+  },
 };
 
 export default function RootLayout({
