@@ -14,13 +14,14 @@ export default function AboutPage() {
         <section>
           <h2 className="text-3xl font-bold mb-4">프로젝트 배경</h2>
           <p className="leading-relaxed">
-            2027년 1월 1일부터 한국에서 가상자산(코인) 양도소득세가 시행됩니다. 많은 투자자들이
-            세금 계산으로 혼란을 겪을 것으로 예상됩니다.
+            코인 거래를 하다 보면 세금 계산, 손익 계산, 선물 포지션 관리 등 다양한 수치를 직접
+            계산해야 하는 순간이 생깁니다. 흩어진 공식을 찾고 스프레드시트를 만드는 데 드는 시간을
+            줄이기 위해 <strong>coinsjot</strong>을 만들었습니다.
           </p>
           <p className="leading-relaxed mt-4">
-            <strong>coinsjot</strong>은 이러한 시점에서 투자자들이 세금 관련 계산을 쉽고 빠르게 할 수
-            있도록 돕기 위해 만들어졌습니다. 복잡한 세무 계산을 간단한 도구로 정리하고, 투자자가
-            스스로 상황을 파악할 수 있도록 하는 것이 목표입니다.
+            coinsjot은 코인 투자자들이 거래 과정에서 필요한 각종 계산을 한 곳에서 빠르게 처리할 수
+            있도록 도구를 모아둔 사이트입니다. 세금 계산부터 선물 청산가, 손익 정산까지 실제 투자에
+            필요한 계산기를 순차적으로 제공합니다.
           </p>
         </section>
 
@@ -49,10 +50,9 @@ export default function AboutPage() {
               </div>
             </li>
             <li className="flex gap-4">
-              <span className="text-2xl">🆓</span>
+              <span className="text-2xl">⚡</span>
               <div>
-                <strong>무료 제공:</strong> 모든 계산기는 무료로 제공됩니다. 부업 차원의 프로젝트로,
-                광고 수익으로 유지됩니다.
+                <strong>빠른 접근:</strong> 회원가입이나 앱 설치 없이 누구나 즉시 사용할 수 있습니다.
               </div>
             </li>
           </ul>
@@ -62,9 +62,9 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold mb-4">계산기 로드맵</h2>
           <div className="space-y-4">
             <div className="border-l-4 border-blue-500 bg-blue-50 p-4 rounded">
-              <h3 className="font-bold text-blue-900 mb-2">✓ 의제취득가액 계산기</h3>
+              <h3 className="font-bold text-blue-900 mb-2">✓ 가상화폐 세금 계산기</h3>
               <p className="text-blue-800 text-sm">
-                2027년 세금 시행을 앞두고 가장 시급한 "의제취득가액 특례" 계산을 제공합니다.
+                2027년 양도소득세 시행에 대비한 의제취득가액 특례 계산 및 예상 세액 산출을 제공합니다.
               </p>
             </div>
 
@@ -92,27 +92,6 @@ export default function AboutPage() {
         </section>
 
         <section>
-          <h2 className="text-3xl font-bold mb-4">기술 스택</h2>
-          <ul className="space-y-2 list-disc list-inside">
-            <li>
-              <strong>프론트엔드:</strong> Next.js 14 (TypeScript, Tailwind CSS)
-            </li>
-            <li>
-              <strong>호스팅:</strong> Vercel (무료 티어)
-            </li>
-            <li>
-              <strong>도메인:</strong> coinsjot.com (가비아)
-            </li>
-            <li>
-              <strong>분석:</strong> Google Analytics
-            </li>
-            <li>
-              <strong>광고:</strong> Google AdSense
-            </li>
-          </ul>
-        </section>
-
-        <section>
           <h2 className="text-3xl font-bold mb-4">자주 묻는 질문</h2>
           <div className="space-y-6">
             <div>
@@ -128,14 +107,6 @@ export default function AboutPage() {
               <p className="text-gray-700">
                 아니요. 모든 계산은 브라우저에서만 수행되며, 서버에 저장되지 않습니다. 페이지를
                 새로고침하면 입력값은 자동으로 삭제됩니다.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-lg mb-2">Q. 이 사이트는 언제 만들어졌나요?</h3>
-              <p className="text-gray-700">
-                coinsjot은 2026년 8월에 시작되었습니다. 2027년 세금 시행을 앞두고 투자자들을 돕기
-                위해 만들어진 프로젝트입니다.
               </p>
             </div>
 
@@ -162,7 +133,7 @@ export default function AboutPage() {
             이용함으로써 발생하는 모든 손해에 대해서는 책임을 지지 않습니다.
           </p>
           <p className="leading-relaxed">
-            복잡한 세금 계산을 간단하게 만들어, 투자자 분들이 정보를 갖춘 결정을 할 수 있도록
+            복잡한 계산을 간단하게 만들어, 투자자 분들이 더 빠르고 정확하게 상황을 파악할 수 있도록
             돕는 것이 coinsjot의 목표입니다.
           </p>
         </section>
