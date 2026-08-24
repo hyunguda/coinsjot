@@ -71,9 +71,9 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-3">무료 제공</h3>
+            <h3 className="text-lg font-semibold mb-3">즉시 사용</h3>
             <p className="text-gray-600">
-              모든 계산기는 무료로 제공됩니다. 광고나 제휴 정보가 포함될 수 있습니다.
+              회원가입 없이 바로 사용할 수 있습니다. 입력한 데이터는 서버에 저장되지 않습니다.
             </p>
           </div>
         </div>

@@ -37,10 +37,6 @@ export default function ContactPage() {
           <ul className="space-y-3 text-sm text-gray-700">
             <li className="flex gap-2">
               <span className="text-blue-600 font-bold">•</span>
-              <span>계산 결과가 맞는지 확인하고 싶습니다</span>
-            </li>
-            <li className="flex gap-2">
-              <span className="text-blue-600 font-bold">•</span>
               <span>새로운 계산기 기능을 요청합니다</span>
             </li>
             <li className="flex gap-2">
@@ -144,9 +140,6 @@ export default function ContactPage() {
         <p className="text-gray-700">
           모든 이메일은 가능한 한 빠르게 처리하려고 합니다. 일반적으로 <strong>2~3 영업일</strong> 내에
           회신하겠습니다.
-        </p>
-        <p className="text-gray-600 text-sm mt-3">
-          (부업 프로젝트인 관계상 늦어질 수 있습니다. 양해 부탁드립니다.)
         </p>
       </div>
     </div>
