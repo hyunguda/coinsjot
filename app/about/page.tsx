@@ -68,10 +68,10 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="border-l-4 border-gray-400 bg-gray-50 p-4 rounded">
-              <h3 className="font-bold text-gray-900 mb-2">📋 손익통산 시뮬레이터</h3>
-              <p className="text-gray-700 text-sm">
-                여러 종목의 손익을 합산해 실제 납부세액을 계산합니다. (준비 중)
+            <div className="border-l-4 border-blue-500 bg-blue-50 p-4 rounded">
+              <h3 className="font-bold text-blue-900 mb-2">✓ 손익통산 시뮬레이터</h3>
+              <p className="text-blue-800 text-sm">
+                여러 종목의 손익을 합산해 기본공제 적용 후 실제 납부세액과 세후 수익률을 계산합니다.
               </p>
             </div>
 
