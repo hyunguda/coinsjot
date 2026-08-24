@@ -34,21 +34,21 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* Calculator 2 - Placeholder */}
-        <div className="border border-gray-200 rounded-lg p-8 bg-gray-50 opacity-50">
-          <h2 className="text-2xl font-bold mb-4 text-gray-400">
+        {/* Calculator 2 */}
+        <div className="border border-gray-200 rounded-lg p-8 hover:shadow-lg transition">
+          <h2 className="text-2xl font-bold mb-4 text-blue-600">
             손익통산 시뮬레이터
           </h2>
-          <p className="text-gray-500 mb-6">
-            준비 중입니다. 여러 종목의 손익을 합산해 실제 납부세액을 계산하는 기능이
-            곧 추가됩니다.
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            여러 코인 종목의 손익을 한 번에 합산해 실제 납부세액을 계산합니다. 익절 종목과
+            손절 종목을 함께 입력하면 손익통산으로 세금을 얼마나 줄일 수 있는지 바로 확인하세요.
           </p>
-          <button
-            disabled
-            className="inline-block bg-gray-400 text-white px-6 py-3 rounded-lg cursor-not-allowed font-medium"
+          <Link
+            href="/calculators/profit-loss-simulator"
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
           >
-            준비 중
-          </button>
+            계산기 이용하기 →
+          </Link>
         </div>
       </section>
 

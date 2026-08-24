@@ -80,6 +80,11 @@ export default function RootLayout({
                       가상화폐 세금 계산기
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/calculators/profit-loss-simulator" className="hover:text-blue-600">
+                      손익통산 시뮬레이터
+                    </Link>
+                  </li>
                 </ul>
               </div>
               <div>

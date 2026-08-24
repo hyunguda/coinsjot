@@ -21,13 +21,21 @@ interface Result {
   };
 }
 
+const formatInput = (raw: string) => {
+  const digits = raw.replace(/[^0-9]/g, "");
+  if (!digits) return "";
+  return Number(digits).toLocaleString("ko-KR");
+};
+
+const parseInput = (formatted: string) => formatted.replace(/[^0-9]/g, "");
+
 export function DeemedAcquisitionCalculator() {
   const [actualPrice, setActualPrice] = useState<string>("");
   const [yearEndPrice, setYearEndPrice] = useState<string>("");
   const [sellPrice, setSellPrice] = useState<string>("");
 
-  const BASIC_DEDUCTION = 2_500_000; // 250만원
-  const TAX_RATE = 0.22; // 22%
+  const BASIC_DEDUCTION = 2_500_000;
+  const TAX_RATE = 0.22;
 
   const result: Result | null = useMemo(() => {
     const actual = parseFloat(actualPrice) || 0;
@@ -36,33 +44,23 @@ export function DeemedAcquisitionCalculator() {
 
     if (actual === 0 || yearEnd === 0) return null;
 
-    // 취득가액 = MAX(실제 취득가액, 2026.12.31 시가)
     const acquisitionPrice = Math.max(actual, yearEnd);
     const basis = acquisitionPrice === actual ? "actual" : "end-of-year";
 
-    // 매도가가 없으면 결과 계산 불가
     if (sell === 0) return null;
 
-    // 양도차익 = 매도가 - 취득가액
     const capitalGain = sell - acquisitionPrice;
-
-    // 과세표준 = MAX(0, 양도차익 - 250만원)
     const taxableIncome = Math.max(0, capitalGain - BASIC_DEDUCTION);
-
-    // 예상세액 = 과세표준 × 22%
     const estimatedTax = taxableIncome * TAX_RATE;
 
-    // 실제 취득가액 기준
     const capitalGainByActual = sell - actual;
     const taxableIncomeByActual = Math.max(0, capitalGainByActual - BASIC_DEDUCTION);
     const estimatedTaxByActual = taxableIncomeByActual * TAX_RATE;
 
-    // 연말 시가 기준
     const capitalGainByYearEnd = sell - yearEnd;
     const taxableIncomeByYearEnd = Math.max(0, capitalGainByYearEnd - BASIC_DEDUCTION);
     const estimatedTaxByYearEnd = taxableIncomeByYearEnd * TAX_RATE;
 
-    // 절세 효과 = 더 높은 세액 - 적용된 세액
     const taxSavings = Math.abs(estimatedTaxByActual - estimatedTaxByYearEnd);
 
     return {
@@ -85,9 +83,7 @@ export function DeemedAcquisitionCalculator() {
     };
   }, [actualPrice, yearEndPrice, sellPrice]);
 
-  const formatNumber = (num: number) => {
-    return num.toLocaleString("ko-KR");
-  };
+  const formatNumber = (num: number) => num.toLocaleString("ko-KR");
 
   const handleReset = () => {
     setActualPrice("");
@@ -108,10 +104,11 @@ export function DeemedAcquisitionCalculator() {
               <span className="text-red-500 ml-1">*</span>
             </label>
             <input
-              type="number"
-              value={actualPrice}
-              onChange={(e) => setActualPrice(e.target.value)}
-              placeholder="예: 50000000"
+              type="text"
+              inputMode="numeric"
+              value={formatInput(actualPrice)}
+              onChange={(e) => setActualPrice(parseInput(e.target.value))}
+              placeholder="예: 50,000,000"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             <p className="text-xs text-gray-500 mt-1">코인을 구매한 당시의 가격 (수수료 제외)</p>
@@ -123,10 +120,11 @@ export function DeemedAcquisitionCalculator() {
               <span className="text-red-500 ml-1">*</span>
             </label>
             <input
-              type="number"
-              value={yearEndPrice}
-              onChange={(e) => setYearEndPrice(e.target.value)}
-              placeholder="예: 80000000"
+              type="text"
+              inputMode="numeric"
+              value={formatInput(yearEndPrice)}
+              onChange={(e) => setYearEndPrice(parseInput(e.target.value))}
+              placeholder="예: 80,000,000"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             <p className="text-xs text-gray-500 mt-1">2026년 12월 31일 거래소 시세 스크린샷 등으로 확인</p>
@@ -138,10 +136,11 @@ export function DeemedAcquisitionCalculator() {
               <span className="text-red-500 ml-1">*</span>
             </label>
             <input
-              type="number"
-              value={sellPrice}
-              onChange={(e) => setSellPrice(e.target.value)}
-              placeholder="예: 100000000"
+              type="text"
+              inputMode="numeric"
+              value={formatInput(sellPrice)}
+              onChange={(e) => setSellPrice(parseInput(e.target.value))}
+              placeholder="예: 100,000,000"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             <p className="text-xs text-gray-500 mt-1">판매 또는 예정 가격</p>
