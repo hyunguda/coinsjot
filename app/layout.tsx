@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}>
+      <head>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-LN7S1YT02H" strategy="afterInteractive" />
+        <Script id="ga4" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LN7S1YT02H');
+        `}</Script>
+      </head>
       <body className="flex flex-col min-h-screen bg-white text-gray-900">
         {/* Header/Navigation */}
         <header className="border-b border-gray-200 sticky top-0 bg-white/95 backdrop-blur z-40">
