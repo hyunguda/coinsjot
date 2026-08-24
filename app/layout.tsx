@@ -82,7 +82,7 @@ export default function RootLayout({
                   </li>
                   <li>
                     <Link href="/calculators/profit-loss-simulator" className="hover:text-blue-600">
-                      손익통산 시뮬레이터
+                      포트폴리오 통합 계산기
                     </Link>
                   </li>
                 </ul>

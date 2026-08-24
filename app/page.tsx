@@ -37,11 +37,11 @@ export default function Home() {
         {/* Calculator 2 */}
         <div className="border border-gray-200 rounded-lg p-8 hover:shadow-lg transition">
           <h2 className="text-2xl font-bold mb-4 text-blue-600">
-            손익통산 시뮬레이터
+            코인 포트폴리오 통합 계산기
           </h2>
           <p className="text-gray-600 mb-6 leading-relaxed">
-            여러 코인 종목의 손익을 한 번에 합산해 실제 납부세액을 계산합니다. 익절 종목과
-            손절 종목을 함께 입력하면 손익통산으로 세금을 얼마나 줄일 수 있는지 바로 확인하세요.
+            보유 중인 여러 코인의 손익을 한 번에 합산해 실제 납부세액과 세후 수익률을 계산합니다.
+            익절·손절 종목을 함께 입력하면 세금을 얼마나 줄일 수 있는지 바로 확인하세요.
           </p>
           <Link
             href="/calculators/profit-loss-simulator"

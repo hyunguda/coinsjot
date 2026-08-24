@@ -2,10 +2,10 @@ import { Metadata } from "next";
 import { ProfitLossCalculator } from "@/app/components/ProfitLossCalculator";
 
 export const metadata: Metadata = {
-  title: "코인 손익통산 시뮬레이터 | coinsjot",
+  title: "코인 포트폴리오 통합 계산기 | coinsjot",
   description:
-    "여러 가상화폐 종목의 손익을 합산해 기본공제 적용 후 실제 납부세액을 계산합니다. 익절·손절 상계로 세금을 줄이는 방법을 시뮬레이션하세요.",
-  keywords: "손익통산, 코인 세금, 가상화폐 양도소득세, 손절 상계, 기본공제, 계산기",
+    "보유 중인 여러 코인의 손익을 한 번에 합산해 실제 납부세액과 세후 수익률을 계산합니다. 익절·손절 상계로 세금을 줄이는 방법을 확인하세요.",
+  keywords: "코인 포트폴리오 세금, 코인 합산 세금, 가상화폐 양도소득세, 손익통산, 손절 상계, 기본공제, 계산기",
 };
 
 export default function ProfitLossSimulatorPage() {
@@ -14,16 +14,16 @@ export default function ProfitLossSimulatorPage() {
       {/* Header */}
       <div className="mb-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          코인 손익통산 시뮬레이터
+          코인 포트폴리오 통합 계산기
         </h1>
         <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-          여러 종목의 손익을 합산(통산)해 실제 납부세액을 계산합니다.
+          보유 중인 여러 코인의 손익을 한 번에 합산해 실제 납부세액과 세후 수익률을 계산합니다.
           <br />
           익절 종목과 손절 종목을 함께 입력하면 세금을 얼마나 줄일 수 있는지 바로 확인하세요.
         </p>
 
         <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
-          <h3 className="font-bold text-blue-900 mb-2">손익통산이란?</h3>
+          <h3 className="font-bold text-blue-900 mb-2">포트폴리오 통합 계산이란?</h3>
           <p className="text-blue-800 text-sm mb-2">
             여러 코인을 거래할 때, <strong>이익과 손실을 합산</strong>해 전체 순이익에 대해서만 세금을 납부합니다.
           </p>

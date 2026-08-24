@@ -69,9 +69,9 @@ export default function AboutPage() {
             </div>
 
             <div className="border-l-4 border-blue-500 bg-blue-50 p-4 rounded">
-              <h3 className="font-bold text-blue-900 mb-2">✓ 손익통산 시뮬레이터</h3>
+              <h3 className="font-bold text-blue-900 mb-2">✓ 코인 포트폴리오 통합 계산기</h3>
               <p className="text-blue-800 text-sm">
-                여러 종목의 손익을 합산해 기본공제 적용 후 실제 납부세액과 세후 수익률을 계산합니다.
+                보유 중인 여러 코인의 손익을 한 번에 합산해 실제 납부세액과 세후 수익률을 계산합니다.
               </p>
             </div>
 
