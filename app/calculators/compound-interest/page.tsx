@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "초기 투자금, 수익률, 총 회차를 입력하면 복리 효과로 자산이 얼마나 성장하는지 회차별로 계산합니다. 회차당 추가 투자금(적립식)도 지원합니다.",
   keywords:
-    "복리 계산기, 코인 복리, 가상화폐 복리, 월복리 계산, 복리 수익 시뮬레이터, 적립식 복리, 코인 수익 계산",
+    "복리 계산기, 코인 복리, 가상화폐 복리, 복리 수익 시뮬레이터, 회차별 복리, 적립식 복리, 코인 수익 계산",
 };
 
 export default function CompoundInterestPage() {
@@ -20,7 +20,7 @@ export default function CompoundInterestPage() {
         <p className="text-lg text-gray-600 mb-8 leading-relaxed">
           초기 투자금, 회차당 수익률, 총 회차를 입력하면 복리 효과로 자산이 얼마나 성장하는지 회차별로 확인하세요.
           <br />
-          기간 단위(일·주·월·년)에 관계없이 수익률과 회차만 맞게 입력하면 됩니다.
+          수익률과 총 회차만 입력하면 됩니다.
         </p>
 
         <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
@@ -100,8 +100,7 @@ export default function CompoundInterestPage() {
               <div className="border-l-4 border-yellow-500 bg-yellow-50 p-4">
                 <p className="font-semibold text-yellow-900 mb-2">Q. 수익률과 회차는 어떻게 설정하나요?</p>
                 <p className="text-yellow-800">
-                  기간 단위는 자유롭게 정하면 됩니다. 월 단위라면 월 수익률과 총 개월 수를, 주 단위라면
-                  주간 수익률과 총 주 수를 입력하세요. 낙관·중립·보수적 시나리오를 각각 넣어 비교해보는 것을 권장합니다.
+                  회차당 수익률과 총 회차 수를 입력하세요. 낙관·중립·보수적 시나리오를 각각 넣어 비교해보는 것을 권장합니다.
                 </p>
               </div>
 

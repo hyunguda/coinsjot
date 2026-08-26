@@ -255,7 +255,7 @@ export function CompoundInterestCalculator() {
           {[
             { num: "1", title: "초기 투자금", desc: "처음 투자할 금액을 원 단위로 입력하세요." },
             { num: "2", title: "수익률", desc: "회차당 기대 수익률(%)을 입력하세요. 소수점 입력 가능 (예: 3.5)." },
-            { num: "3", title: "총 회차", desc: "복리를 적용할 총 횟수를 입력하세요. 기간 단위(일·주·월·년)는 자유롭게 설정하면 됩니다." },
+            { num: "3", title: "총 회차", desc: "복리를 적용할 총 횟수를 입력하세요." },
             { num: "4", title: "회차당 추가 투자금", desc: "매 회차마다 추가로 투자하는 금액입니다. 거치식이면 비워두세요." },
           ].map(({ num, title, desc }) => (
             <div key={title} className="px-5 py-4 flex gap-4">
