@@ -50,6 +50,22 @@ export default function Home() {
             계산기 이용하기 →
           </Link>
         </div>
+        {/* Calculator 3 */}
+        <div className="border border-gray-200 rounded-lg p-8 hover:shadow-lg transition">
+          <h2 className="text-2xl font-bold mb-4 text-blue-600">
+            코인 복리 수익 계산기
+          </h2>
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            초기 투자금과 월 수익률을 입력하면 복리 효과로 자산이 얼마나 성장하는지 월별로 확인할 수 있습니다.
+            월 추가 투자금을 설정해 적립식 시나리오도 계산해보세요.
+          </p>
+          <Link
+            href="/calculators/compound-interest"
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
+          >
+            계산기 이용하기 →
+          </Link>
+        </div>
       </section>
 
       {/* Features Section */}

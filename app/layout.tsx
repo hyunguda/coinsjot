@@ -85,6 +85,11 @@ export default function RootLayout({
                       코인 포트폴리오 통합 계산기
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/calculators/compound-interest" className="hover:text-blue-600">
+                      코인 복리 수익 계산기
+                    </Link>
+                  </li>
                 </ul>
               </div>
               <div>

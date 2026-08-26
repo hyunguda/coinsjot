@@ -75,6 +75,13 @@ export default function AboutPage() {
               </p>
             </div>
 
+            <div className="border-l-4 border-blue-500 bg-blue-50 p-4 rounded">
+              <h3 className="font-bold text-blue-900 mb-2">✓ 코인 복리 수익 계산기</h3>
+              <p className="text-blue-800 text-sm">
+                초기 투자금과 월 수익률을 입력하면 복리 효과로 자산이 얼마나 성장하는지 월별로 계산합니다. 적립식 투자 시나리오도 지원합니다.
+              </p>
+            </div>
+
             <div className="border-l-4 border-gray-400 bg-gray-50 p-4 rounded">
               <h3 className="font-bold text-gray-900 mb-2">📊 선물 청산가 계산기</h3>
               <p className="text-gray-700 text-sm">
