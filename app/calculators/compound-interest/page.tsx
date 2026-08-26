@@ -4,7 +4,7 @@ import { CompoundInterestCalculator } from "@/app/components/CompoundInterestCal
 export const metadata: Metadata = {
   title: "코인 복리 수익 계산기 | coinsjot",
   description:
-    "초기 투자금, 월 수익률, 투자 기간을 입력하면 복리 효과로 자산이 얼마나 성장하는지 월별로 계산합니다. 월 추가 투자금(적립식)도 지원합니다.",
+    "초기 투자금, 수익률, 총 회차를 입력하면 복리 효과로 자산이 얼마나 성장하는지 회차별로 계산합니다. 회차당 추가 투자금(적립식)도 지원합니다.",
   keywords:
     "복리 계산기, 코인 복리, 가상화폐 복리, 월복리 계산, 복리 수익 시뮬레이터, 적립식 복리, 코인 수익 계산",
 };
@@ -48,13 +48,13 @@ export default function CompoundInterestPage() {
           <section>
             <h3 className="text-xl font-bold mb-4">복리의 힘</h3>
             <p className="text-gray-700 leading-relaxed mb-4">
-              복리는 &lsquo;72의 법칙&rsquo;으로 설명할 수 있습니다. 월 수익률이 일정할 때,
-              자산이 2배가 되는 데 걸리는 개월 수는 대략 <strong>72 ÷ 월 수익률(%)</strong>입니다.
-              예를 들어 월 3% 수익률이라면 약 24개월(2년) 후 원금이 2배가 됩니다.
+              복리는 &lsquo;72의 법칙&rsquo;으로 설명할 수 있습니다. 수익률이 일정할 때,
+              자산이 2배가 되는 데 걸리는 회차는 대략 <strong>72 ÷ 수익률(%)</strong>입니다.
+              예를 들어 회차당 3% 수익률이라면 약 24회차 후 원금이 2배가 됩니다.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              단리라면 동일 조건에서 원금의 2배에 도달하려면 약 33개월이 필요합니다.
-              복리는 이 차이를 시간이 지날수록 더 크게 벌립니다.
+              단리라면 동일 조건에서 원금의 2배에 도달하려면 약 33회차가 필요합니다.
+              복리는 이 차이를 회차가 쌓일수록 더 크게 벌립니다.
             </p>
           </section>
 
@@ -68,7 +68,7 @@ export default function CompoundInterestPage() {
                 <table className="w-full text-sm min-w-[360px]">
                   <thead>
                     <tr className="border-b-2 border-gray-300">
-                      <th className="text-left py-2 px-3">월차</th>
+                      <th className="text-left py-2 px-3">회차</th>
                       <th className="text-right py-2 px-3">자산 합계</th>
                       <th className="text-right py-2 px-3">수익금</th>
                     </tr>
@@ -119,8 +119,8 @@ export default function CompoundInterestPage() {
               <div className="border-l-4 border-yellow-500 bg-yellow-50 p-4">
                 <p className="font-semibold text-yellow-900 mb-2">Q. 거치식과 적립식 차이가 뭔가요?</p>
                 <p className="text-yellow-800">
-                  거치식은 초기 투자금만 넣고 운용하는 방식입니다. 월 추가 투자금을 0으로 두면 거치식입니다.
-                  적립식은 매달 일정 금액을 추가 투자하는 방식으로, 월 추가 투자금에 금액을 입력하면 됩니다.
+                  거치식은 초기 투자금만 넣고 운용하는 방식입니다. 회차당 추가 투자금을 비워두면 거치식입니다.
+                  적립식은 매 회차마다 일정 금액을 추가 투자하는 방식으로, 회차당 추가 투자금에 금액을 입력하면 됩니다.
                 </p>
               </div>
             </div>
