@@ -90,6 +90,11 @@ export default function RootLayout({
                       코인 복리 수익 계산기
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/calculators/leverage-pnl" className="hover:text-blue-600">
+                      코인 선물 레버리지 손익 계산기
+                    </Link>
+                  </li>
                 </ul>
               </div>
               <div>
