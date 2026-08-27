@@ -82,10 +82,10 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="border-l-4 border-gray-400 bg-gray-50 p-4 rounded">
-              <h3 className="font-bold text-gray-900 mb-2">📊 선물 청산가 계산기</h3>
-              <p className="text-gray-700 text-sm">
-                레버리지, 마진 방식별 청산가와 손익을 계산합니다. (준비 중)
+            <div className="border-l-4 border-blue-500 bg-blue-50 p-4 rounded">
+              <h3 className="font-bold text-blue-900 mb-2">✓ 코인 선물 레버리지 손익 계산기</h3>
+              <p className="text-blue-800 text-sm">
+                진입금액, 레버리지, 엑시트금액을 입력하면 수익률·청산가·청산까지 거리를 즉시 계산합니다. 롱·숏 포지션 모두 지원합니다.
               </p>
             </div>
 
@@ -125,6 +125,28 @@ export default function AboutPage() {
                 </a>
                 를 통해 의견을 보내주시면 감사하겠습니다. 모든 의견을 검토하여 개선에 반영합니다.
               </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-3xl font-bold mb-4">업데이트 이력</h2>
+          <div className="space-y-3">
+            <div className="flex gap-4 items-start border-b border-gray-100 pb-3">
+              <span className="text-xs text-gray-400 font-mono mt-0.5 whitespace-nowrap">2026-08-27</span>
+              <p className="text-sm text-gray-700"><strong>코인 선물 레버리지 손익 계산기</strong> 출시 — 진입가·레버리지·엑시트가 입력 시 수익률·청산가·청산까지 거리 즉시 계산. 롱·숏 포지션 지원.</p>
+            </div>
+            <div className="flex gap-4 items-start border-b border-gray-100 pb-3">
+              <span className="text-xs text-gray-400 font-mono mt-0.5 whitespace-nowrap">2026-08-26</span>
+              <p className="text-sm text-gray-700"><strong>코인 복리 수익 계산기</strong> 출시 — 초기 투자금·수익률·총 회차 기준 복리 시뮬레이션. 적립식(회차당 추가 투자금) 지원.</p>
+            </div>
+            <div className="flex gap-4 items-start border-b border-gray-100 pb-3">
+              <span className="text-xs text-gray-400 font-mono mt-0.5 whitespace-nowrap">2026-08-25</span>
+              <p className="text-sm text-gray-700"><strong>코인 포트폴리오 통합 계산기</strong> 출시 — 여러 종목 손익 합산 후 기본공제 적용, 실납부세액 계산.</p>
+            </div>
+            <div className="flex gap-4 items-start">
+              <span className="text-xs text-gray-400 font-mono mt-0.5 whitespace-nowrap">2026-08-24</span>
+              <p className="text-sm text-gray-700"><strong>가상화폐 세금 계산기</strong> 출시 — 의제취득가액 특례 적용 여부 비교 및 양도소득세 예상 세액 산출.</p>
             </div>
           </div>
         </section>
