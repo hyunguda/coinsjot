@@ -66,6 +66,23 @@ export default function Home() {
             계산기 이용하기 →
           </Link>
         </div>
+
+        {/* Calculator 4 */}
+        <div className="border border-gray-200 rounded-lg p-8 hover:shadow-lg transition">
+          <h2 className="text-2xl font-bold mb-4 text-blue-600">
+            코인 선물 레버리지 손익 계산기
+          </h2>
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            진입금액, 레버리지, 엑시트금액을 입력하면 수익률·청산가·청산까지 거리를 즉시 계산합니다.
+            롱·숏 포지션 모두 지원하며, 레버리지별 리스크를 한눈에 파악할 수 있습니다.
+          </p>
+          <Link
+            href="/calculators/leverage-pnl"
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
+          >
+            계산기 이용하기 →
+          </Link>
+        </div>
       </section>
 
       {/* Features Section */}
