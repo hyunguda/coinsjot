@@ -83,6 +83,23 @@ export default function Home() {
             계산기 이용하기 →
           </Link>
         </div>
+
+        {/* Calculator 5 */}
+        <div className="border border-gray-200 rounded-lg p-8 hover:shadow-lg transition">
+          <h2 className="text-2xl font-bold mb-4 text-blue-600">
+            선물 청산가 계산기 (격리마진)
+          </h2>
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            내가 넣는 돈(증거금)과 레버리지를 입력하면 포지션 크기·청산가·파산가를 한 번에 계산합니다.
+            "100만원 10배면 어느 가격에 청산되나?" 포지션을 열기 전에 미리 확인하세요.
+          </p>
+          <Link
+            href="/calculators/isolated-liquidation"
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
+          >
+            계산기 이용하기 →
+          </Link>
+        </div>
       </section>
 
       {/* Features Section */}

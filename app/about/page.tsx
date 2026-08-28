@@ -89,6 +89,13 @@ export default function AboutPage() {
               </p>
             </div>
 
+            <div className="border-l-4 border-blue-500 bg-blue-50 p-4 rounded">
+              <h3 className="font-bold text-blue-900 mb-2">✓ 선물 청산가 계산기 (격리마진)</h3>
+              <p className="text-blue-800 text-sm">
+                격리마진 방식에서 포지션이 강제청산되는 가격을 계산합니다. 유지증거금율을 반영한 실제 청산가와 파산가를 함께 확인할 수 있습니다.
+              </p>
+            </div>
+
             <div className="border-l-4 border-gray-400 bg-gray-50 p-4 rounded">
               <h3 className="font-bold text-gray-900 mb-2">📈 거래 기록 추적기</h3>
               <p className="text-gray-700 text-sm">
