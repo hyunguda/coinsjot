@@ -4,7 +4,7 @@ import { IsolatedLiquidationCalculator } from "@/app/components/IsolatedLiquidat
 export const metadata: Metadata = {
   title: "선물 청산가 계산기 (격리마진) | coinsjot",
   description:
-    "격리마진 방식의 선물 포지션 청산가를 계산합니다. 진입가·레버리지·증거금·유지증거금율을 입력하면 청산가와 파산가를 즉시 계산합니다. 롱·숏 모두 지원.",
+    "격리마진 방식의 선물 포지션 청산가를 계산합니다. 내가 넣는 증거금·레버리지·진입가를 입력하면 청산가와 포지션 크기를 즉시 계산합니다. 롱·숏 모두 지원.",
   keywords:
     "격리마진 청산가, isolated margin 청산가, 선물 청산가 계산기, 청산가 계산, 격리 선물, 코인 청산가, 파산가, 강제청산가",
 };
@@ -27,7 +27,7 @@ export default function IsolatedLiquidationPage() {
           <h3 className="font-bold text-orange-900 mb-2">이 계산기가 필요한 이유</h3>
           <p className="text-orange-800 text-sm mb-2">
             거래소에서 포지션을 열 때 청산가가 자동으로 표시되지만, <strong>열기 전에 미리 시뮬레이션하기는 어렵습니다.</strong>
-            이 계산기는 내 증거금과 레버리지를 입력하면 포지션 크기·청산가·파산가를 한 번에 계산해줍니다.
+            이 계산기는 내 증거금과 레버리지를 입력하면 포지션 크기와 청산가를 한 번에 계산해줍니다.
           </p>
           <p className="text-orange-800 text-sm">
             <strong>격리마진:</strong> 포지션별로 증거금을 따로 배정하는 방식. 청산이 발생해도 해당 포지션의 증거금만 잃고
@@ -49,8 +49,8 @@ export default function IsolatedLiquidationPage() {
           <section>
             <h3 className="text-xl font-bold mb-4">격리마진 청산가 계산 원리</h3>
             <p className="text-gray-700 leading-relaxed mb-4">
-              격리마진에서 청산가는 내가 할당한 증거금이 유지증거금 수준 이하로 떨어지는 시점의 가격입니다.
-              유지증거금율(MMR)이 클수록 청산가는 진입가에 더 가까워집니다.
+              격리마진에서 청산가는 내가 배정한 증거금이 전액 소멸되는 시점의 가격입니다.
+              레버리지가 높을수록 청산가가 진입가에 가까워지며, 작은 가격 변동에도 청산될 위험이 커집니다.
             </p>
             <div className="bg-gray-50 rounded-lg p-4 text-sm font-mono text-gray-700 space-y-1">
               <p>롱 청산가 = 진입가 × (1 − 1 ÷ 레버리지)</p>
@@ -114,7 +114,7 @@ export default function IsolatedLiquidationPage() {
         </p>
         <ul className="text-red-800 text-sm space-y-2 mb-4 ml-4">
           <li>• 레버리지 거래는 원금 전액 손실의 위험이 있습니다.</li>
-          <li>• 유지증거금율, 펀딩비, 수수료에 따라 실제 청산가는 달라집니다.</li>
+          <li>• 슬리피지·수수료 미반영 이론값으로, 실제 거래소 청산가와 다를 수 있습니다.</li>
           <li>• 이 사이트의 정보 사용으로 인한 모든 손실과 책임은 사용자 본인에게 있습니다.</li>
         </ul>
         <p className="text-red-900 font-semibold">
