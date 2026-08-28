@@ -100,6 +100,23 @@ export default function Home() {
             계산기 이용하기 →
           </Link>
         </div>
+
+        {/* Calculator 6 */}
+        <div className="border border-gray-200 rounded-lg p-8 hover:shadow-lg transition">
+          <h2 className="text-2xl font-bold mb-4 text-blue-600">
+            선물 청산가 계산기 (교차마진)
+          </h2>
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            지갑 전체 잔고가 청산 버퍼가 되는 교차마진의 청산가를 계산합니다.
+            다른 포지션의 미실현 손익도 반영해 실제 청산가에 가까운 시뮬레이션이 가능합니다.
+          </p>
+          <Link
+            href="/calculators/cross-liquidation"
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
+          >
+            계산기 이용하기 →
+          </Link>
+        </div>
       </section>
 
       {/* Features Section */}
