@@ -96,10 +96,17 @@ export default function AboutPage() {
               </p>
             </div>
 
+            <div className="border-l-4 border-blue-500 bg-blue-50 p-4 rounded">
+              <h3 className="font-bold text-blue-900 mb-2">✓ 선물 청산가 계산기 (교차마진)</h3>
+              <p className="text-blue-800 text-sm">
+                지갑 전체 잔고가 청산 버퍼가 되는 교차마진의 청산가를 계산합니다. 다른 포지션의 미실현 손익도 반영해 실제 청산가에 가까운 시뮬레이션이 가능합니다.
+              </p>
+            </div>
+
             <div className="border-l-4 border-gray-400 bg-gray-50 p-4 rounded">
-              <h3 className="font-bold text-gray-900 mb-2">📈 거래 기록 추적기</h3>
+              <h3 className="font-bold text-gray-900 mb-2">📈 추가 계산기</h3>
               <p className="text-gray-700 text-sm">
-                개인의 거래 기록을 관리하고 성과를 분석합니다. (준비 중)
+                선물 포지션 손익, 포지션 사이징, 12/31 시가 기록, 100회 거래 챌린지 등이 순차적으로 추가될 예정입니다.
               </p>
             </div>
           </div>
