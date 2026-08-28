@@ -26,32 +26,25 @@ export function IsolatedLiquidationCalculator() {
   const [entryRaw, setEntryRaw] = useState("");
   const [leverageStr, setLeverageStr] = useState("");
   const [marginRaw, setMarginRaw] = useState("");
-  const [mmrStr, setMmrStr] = useState("0.5");
 
   const result = useMemo(() => {
     const entry = Number(parseIn(entryRaw));
     const leverage = parseInt(leverageStr);
     const margin = Number(parseIn(marginRaw));
-    const mmr = parseFloat(mmrStr) / 100;
 
-    if (!entry || !leverage || leverage < 1 || !margin || isNaN(mmr) || mmr < 0) return null;
+    if (!entry || !leverage || leverage < 1 || !margin) return null;
 
     const positionSize = margin * leverage;
     const imr = 1 / leverage;
 
-    const bankruptcyPrice =
+    const liquidationPrice =
       direction === "long" ? entry * (1 - imr) : entry * (1 + imr);
 
-    const liquidationPrice =
-      direction === "long"
-        ? entry * (1 - imr + mmr)
-        : entry * (1 + imr - mmr);
-
-    const distancePct = (Math.abs(liquidationPrice - entry) / entry) * 100;
+    const distancePct = imr * 100;
     const distanceWon = Math.abs(liquidationPrice - entry);
 
-    return { positionSize, bankruptcyPrice, liquidationPrice, distancePct, distanceWon, imr, mmr };
-  }, [entryRaw, leverageStr, marginRaw, mmrStr, direction]);
+    return { positionSize, liquidationPrice, distancePct, distanceWon, imr };
+  }, [entryRaw, leverageStr, marginRaw, direction]);
 
   const isLong = direction === "long";
 
@@ -86,7 +79,7 @@ export function IsolatedLiquidationCalculator() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
               <label className="block text-xs text-gray-500 mb-1.5">진입가 (원)</label>
               <input
@@ -117,19 +110,6 @@ export function IsolatedLiquidationCalculator() {
                 value={fmtIn(marginRaw)}
                 placeholder="예: 1,000,000"
                 onChange={(e) => setMarginRaw(parseIn(e.target.value))}
-                className={inputCls}
-              />
-            </div>
-            <div>
-              <label className="block text-xs text-gray-500 mb-1.5">
-                유지증거금율 (%) <span className="text-gray-400">— 거래소 기본값 0.5%</span>
-              </label>
-              <input
-                type="text"
-                inputMode="decimal"
-                value={mmrStr}
-                placeholder="0.5"
-                onChange={(e) => setMmrStr(e.target.value.replace(/[^0-9.]/g, ""))}
                 className={inputCls}
               />
             </div>
@@ -179,7 +159,7 @@ export function IsolatedLiquidationCalculator() {
                 },
                 {
                   tag: "B",
-                  label: "증거금 (내 투자금)",
+                  label: "증거금 (내가 투자한 금액 = 최대 손실액)",
                   val: fmtWon(Number(parseIn(marginRaw))),
                   cls: "text-gray-900",
                 },
@@ -191,30 +171,24 @@ export function IsolatedLiquidationCalculator() {
                 },
                 {
                   tag: "D = 1 ÷ 레버리지",
-                  label: "초기증거금율 (IMR)",
+                  label: "증거금율 (내 돈 비율)",
                   val: fmtRate(result.imr * 100),
                   cls: "text-gray-600",
                 },
                 {
-                  tag: "E = A × (1 − D)",
-                  label: `파산가 (${isLong ? "롱" : "숏"}) — 증거금 전액 소멸 가격`,
-                  val: fmtWon(result.bankruptcyPrice),
-                  cls: "text-red-500",
-                },
-                {
-                  tag: `F = A × (1 ${isLong ? "−" : "+"} D ${isLong ? "+" : "−"} MMR)`,
-                  label: `청산가 (격리마진, 유지증거금율 ${mmrStr}% 적용)`,
+                  tag: `E = A × (1 ${isLong ? "−" : "+"} D)`,
+                  label: `청산가 (${isLong ? "롱" : "숏"}) — 증거금 전액 소멸 가격`,
                   val: fmtWon(result.liquidationPrice),
                   cls: "text-orange-500",
                 },
                 {
-                  tag: "G = |F − A| ÷ A",
+                  tag: "F = D × 100",
                   label: "청산까지 거리 (진입가 대비 %)",
                   val: fmtRate(result.distancePct),
                   cls: "text-orange-500",
                 },
                 {
-                  tag: "H = |F − A|",
+                  tag: "G = |E − A|",
                   label: "청산까지 거리 (가격 차이)",
                   val: fmtWon(result.distanceWon),
                   cls: "text-orange-500",
@@ -233,13 +207,13 @@ export function IsolatedLiquidationCalculator() {
             </div>
           </div>
 
-          {/* 파산가 vs 청산가 안내 */}
-          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 text-sm text-amber-800">
-            <p className="font-semibold mb-1">파산가 vs 청산가 차이</p>
+          {/* 슬리피지·수수료 미반영 안내 */}
+          <div className="bg-yellow-50 border border-yellow-200 rounded-2xl p-5 text-sm text-yellow-800">
+            <p className="font-semibold mb-1">⚠️ 실제 거래소 청산가와 다를 수 있습니다</p>
             <p className="leading-relaxed">
-              <strong>파산가</strong>는 증거금이 0원이 되는 이론적 가격이고,{" "}
-              <strong>청산가</strong>는 거래소가 유지증거금율을 보장하기 위해 실제로 강제청산을 실행하는
-              가격입니다. 청산가가 파산가보다 진입가에 더 가깝습니다.
+              이 계산기의 청산가는 <strong>슬리피지·거래 수수료가 반영되지 않은 이론값</strong>입니다.
+              실제 거래소는 이 가격보다 약간 앞에서 강제청산을 실행합니다.
+              정확한 청산가는 포지션을 열고 거래소 화면에서 직접 확인하세요.
             </p>
           </div>
         </>
@@ -270,12 +244,7 @@ export function IsolatedLiquidationCalculator() {
             {
               num: "4",
               title: "증거금",
-              desc: "내가 실제 투자한 금액(원)을 입력하세요. 포지션 크기는 자동으로 계산됩니다.",
-            },
-            {
-              num: "5",
-              title: "유지증거금율",
-              desc: "거래소별로 다르며 바이낸스·바이비트 기본값은 0.5%입니다. 포지션 크기에 따라 달라질 수 있습니다.",
+              desc: "내가 실제 투자한 금액(원)을 입력하세요. 격리마진에서는 이 금액이 최대 손실액입니다.",
             },
           ].map(({ num, title, desc }) => (
             <div key={title} className="px-5 py-4 flex gap-4">

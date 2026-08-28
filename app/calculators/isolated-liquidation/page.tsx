@@ -53,37 +53,22 @@ export default function IsolatedLiquidationPage() {
               유지증거금율(MMR)이 클수록 청산가는 진입가에 더 가까워집니다.
             </p>
             <div className="bg-gray-50 rounded-lg p-4 text-sm font-mono text-gray-700 space-y-1">
-              <p>롱 청산가 = 진입가 × (1 − 초기증거금율 + 유지증거금율)</p>
-              <p>숏 청산가 = 진입가 × (1 + 초기증거금율 − 유지증거금율)</p>
-              <p className="mt-2 text-gray-500">초기증거금율 = 1 ÷ 레버리지</p>
-              <p className="text-gray-500">유지증거금율 = 거래소 지정값 (기본 0.5%)</p>
+              <p>롱 청산가 = 진입가 × (1 − 1 ÷ 레버리지)</p>
+              <p>숏 청산가 = 진입가 × (1 + 1 ÷ 레버리지)</p>
+              <p className="mt-2 text-gray-500">청산까지 거리 = 1 ÷ 레버리지 × 100 (%)</p>
             </div>
-          </section>
-
-          <section>
-            <h3 className="text-xl font-bold mb-4">파산가 vs 청산가</h3>
-            <div className="bg-gray-50 rounded-lg p-4 text-sm font-mono text-gray-700 space-y-1">
-              <p>롱 파산가 = 진입가 × (1 − 초기증거금율)</p>
-              <p>숏 파산가 = 진입가 × (1 + 초기증거금율)</p>
-            </div>
-            <p className="text-gray-700 leading-relaxed mt-4">
-              파산가는 증거금이 0원이 되는 이론적 가격입니다. 거래소는 파산 전에 유지증거금율 수준에서
-              미리 강제청산을 실행하므로, 실제 청산가는 항상 파산가보다 진입가에 더 가깝습니다.
-            </p>
           </section>
 
           <section>
             <h3 className="text-xl font-bold mb-4">계산 예시</h3>
             <div className="bg-gray-50 rounded-lg p-6">
               <p className="text-sm text-gray-600 mb-4 font-medium">
-                조건: 롱 포지션 / 진입가 50,000,000원 / 레버리지 10배 / 증거금 1,000,000원 / 유지증거금율 0.5%
+                조건: 롱 포지션 / 진입가 50,000,000원 / 레버리지 10배 / 증거금 1,000,000원
               </p>
               <div className="space-y-2 text-sm text-gray-700">
                 <p>포지션 크기: 1,000,000 × 10 = <strong>10,000,000원</strong></p>
-                <p>초기증거금율: 1 ÷ 10 = <strong>10%</strong></p>
-                <p>파산가: 50,000,000 × (1 − 0.10) = <strong>45,000,000원</strong></p>
-                <p>청산가: 50,000,000 × (1 − 0.10 + 0.005) = <strong>45,250,000원</strong></p>
-                <p>청산까지 거리: |45,250,000 − 50,000,000| ÷ 50,000,000 = <strong>9.5%</strong></p>
+                <p>청산가: 50,000,000 × (1 − 1/10) = <strong>45,000,000원</strong></p>
+                <p>청산까지 거리: 1/10 × 100 = <strong>10%</strong></p>
               </div>
             </div>
           </section>
@@ -93,28 +78,27 @@ export default function IsolatedLiquidationPage() {
             <div className="space-y-4">
               <div className="border-l-4 border-yellow-500 bg-yellow-50 p-4">
                 <p className="font-semibold text-yellow-900 mb-2">
-                  Q. 유지증거금율은 어디서 확인하나요?
+                  Q. 실제 거래소 청산가와 왜 다를 수 있나요?
                 </p>
                 <p className="text-yellow-800">
-                  바이낸스·바이비트 등 거래소 선물 페이지에서 확인할 수 있습니다. 포지션 크기(명목가치)에 따라
-                  계단식으로 달라지며, 소액 포지션의 경우 대부분 0.5%가 적용됩니다.
-                </p>
-              </div>
-              <div className="border-l-4 border-yellow-500 bg-yellow-50 p-4">
-                <p className="font-semibold text-yellow-900 mb-2">
-                  Q. 실제 청산가와 다를 수 있나요?
-                </p>
-                <p className="text-yellow-800">
-                  예. 이 계산기는 펀딩비 누적, 거래 수수료, 보험 기금 수수료 등을 반영하지 않습니다.
-                  거래소마다 추가 비용이 있으므로 실제 청산가는 다소 다를 수 있습니다. 반드시 거래소의
-                  실제 청산가 표시를 함께 확인하세요.
+                  이 계산기는 슬리피지·거래 수수료를 반영하지 않습니다. 거래소는 강제청산 실행 시 발생하는
+                  슬리피지와 수수료를 처리하기 위해 이 계산값보다 진입가에 더 가까운 시점에 청산을 실행합니다.
+                  포지션을 열고 나면 거래소 화면에 표시되는 청산가를 기준으로 삼으세요.
                 </p>
               </div>
               <div className="border-l-4 border-yellow-500 bg-yellow-50 p-4">
                 <p className="font-semibold text-yellow-900 mb-2">Q. 증거금을 추가하면 청산가가 바뀌나요?</p>
                 <p className="text-yellow-800">
-                  격리마진에서는 증거금을 추가(Add Margin)하면 청산가가 파산가 방향으로 이동합니다.
-                  이 계산기는 초기 증거금 기준으로 계산되며, 증거금 추가 후 청산가는 거래소 UI에서 직접 확인하세요.
+                  격리마진에서 증거금을 추가(Add Margin)하면 청산가가 더 멀어집니다.
+                  이 계산기는 초기 증거금 기준이므로, 증거금 추가 후 청산가는 거래소 UI에서 직접 확인하세요.
+                </p>
+              </div>
+              <div className="border-l-4 border-yellow-500 bg-yellow-50 p-4">
+                <p className="font-semibold text-yellow-900 mb-2">Q. 격리마진과 교차마진 중 무엇이 유리한가요?</p>
+                <p className="text-yellow-800">
+                  격리마진은 해당 포지션에 배정한 증거금만 잃고 나머지 잔고는 보호됩니다. 리스크를 포지션 단위로
+                  제한하고 싶을 때 적합합니다. 교차마진은 잔고 전체가 버퍼 역할을 해 청산이 잘 안 되지만,
+                  청산되면 전체 잔고를 잃을 수 있습니다.
                 </p>
               </div>
             </div>
