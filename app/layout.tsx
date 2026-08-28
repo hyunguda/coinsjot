@@ -95,6 +95,11 @@ export default function RootLayout({
                       코인 선물 레버리지 손익 계산기
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/calculators/isolated-liquidation" className="hover:text-blue-600">
+                      선물 청산가 계산기 (격리마진)
+                    </Link>
+                  </li>
                 </ul>
               </div>
               <div>
