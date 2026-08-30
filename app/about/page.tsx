@@ -103,10 +103,17 @@ export default function AboutPage() {
               </p>
             </div>
 
+            <div className="border-l-4 border-blue-500 bg-blue-50 p-4 rounded">
+              <h3 className="font-bold text-blue-900 mb-2">✓ 분할매수 평균단가 계산기</h3>
+              <p className="text-blue-800 text-sm">
+                차수별 매수가와 금액(또는 수량)을 입력하면 평균 단가, 총 투자금액, 총 수량을 즉시 계산합니다. 금액 입력·수량 입력 두 가지 모드를 지원합니다.
+              </p>
+            </div>
+
             <div className="border-l-4 border-gray-400 bg-gray-50 p-4 rounded">
               <h3 className="font-bold text-gray-900 mb-2">📈 추가 계산기</h3>
               <p className="text-gray-700 text-sm">
-                선물 포지션 손익, 포지션 사이징, 12/31 시가 기록, 100회 거래 챌린지 등이 순차적으로 추가될 예정입니다.
+                포지션 사이징, 12/31 시가 기록, 100회 거래 챌린지 등이 순차적으로 추가될 예정입니다.
               </p>
             </div>
           </div>
