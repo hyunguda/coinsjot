@@ -105,6 +105,11 @@ export default function RootLayout({
                       선물 청산가 계산기 (교차마진)
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/calculators/dca-average" className="hover:text-blue-600">
+                      분할매수 평균단가 계산기
+                    </Link>
+                  </li>
                 </ul>
               </div>
               <div>

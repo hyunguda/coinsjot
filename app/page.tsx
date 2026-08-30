@@ -117,6 +117,23 @@ export default function Home() {
             계산기 이용하기 →
           </Link>
         </div>
+
+        {/* Calculator 7 */}
+        <div className="border border-gray-200 rounded-lg p-8 hover:shadow-lg transition">
+          <h2 className="text-2xl font-bold mb-4 text-blue-600">
+            분할매수 평균단가 계산기
+          </h2>
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            차수별 매수가와 금액(또는 수량)을 입력하면 평균 단가, 총 투자금액, 총 수량을 즉시 계산합니다.
+            "3번 나눠 샀는데 평균이 얼마지?" 를 한 번에 확인하세요.
+          </p>
+          <Link
+            href="/calculators/dca-average"
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
+          >
+            계산기 이용하기 →
+          </Link>
+        </div>
       </section>
 
       {/* Features Section */}
