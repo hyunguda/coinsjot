@@ -24,6 +24,15 @@ function calcGiftTax(taxableBase: number): number {
   return taxableBase * 0.5 - 460_000_000;
 }
 
+function getGiftTaxRate(taxableBase: number): string {
+  if (taxableBase <= 0) return "—";
+  if (taxableBase <= 100_000_000) return "10%";
+  if (taxableBase <= 500_000_000) return "20%";
+  if (taxableBase <= 1_000_000_000) return "30%";
+  if (taxableBase <= 3_000_000_000) return "40%";
+  return "50%";
+}
+
 function calcCapitalGainsTax(gain: number): number {
   const taxableBase = Math.max(0, gain - 2_500_000);
   return taxableBase * 0.22;
@@ -76,8 +85,9 @@ export function GiftTaxCalculator() {
     const rows = RELATIONSHIPS.map((rel) => {
       const taxableBase = Math.max(0, totalCurrent - rel.exemption);
       const giftTax = calcGiftTax(taxableBase);
+      const rate = getGiftTaxRate(taxableBase);
       const savings = directTax - giftTax;
-      return { ...rel, giftTax, savings };
+      return { ...rel, taxableBase, rate, giftTax, savings };
     });
 
     return { totalAcquisition, totalCurrent, gain, directTax, rows };
@@ -186,7 +196,7 @@ export function GiftTaxCalculator() {
                 const isEqual = Math.abs(row.savings) < 1;
                 return (
                   <div key={row.label} className="px-5 py-4">
-                    <div className="flex items-start justify-between gap-3 mb-2.5">
+                    <div className="flex items-start justify-between gap-3 mb-3">
                       <div className="min-w-0">
                         <p className="text-sm font-semibold text-gray-800">
                           {row.label}
@@ -209,23 +219,35 @@ export function GiftTaxCalculator() {
                           : `${fmtKRW(-row.savings)} 불리`}
                       </span>
                     </div>
-                    <div className="grid grid-cols-2 gap-x-6 text-xs text-gray-500">
-                      <span>
-                        공제 한도:{" "}
-                        <strong className="text-gray-700">
+                    <div className="grid grid-cols-4 gap-x-3 text-xs">
+                      <div className="text-gray-400">
+                        공제 한도
+                        <p className="mt-0.5 font-semibold text-gray-700 tabular-nums">
                           {fmtKRW(row.exemption)}
-                        </strong>
-                      </span>
-                      <span>
-                        증여세:{" "}
-                        <strong
-                          className={
-                            row.giftTax === 0 ? "text-green-600" : "text-gray-700"
-                          }
+                        </p>
+                      </div>
+                      <div className="text-gray-400">
+                        과세표준
+                        <p className="mt-0.5 font-semibold text-gray-700 tabular-nums">
+                          {fmtKRW(row.taxableBase)}
+                        </p>
+                      </div>
+                      <div className="text-gray-400">
+                        적용 세율
+                        <p className="mt-0.5 font-semibold text-gray-700">
+                          {row.rate}
+                        </p>
+                      </div>
+                      <div className="text-gray-400">
+                        증여세
+                        <p
+                          className={`mt-0.5 font-bold tabular-nums ${
+                            row.giftTax === 0 ? "text-green-600" : "text-gray-800"
+                          }`}
                         >
                           {fmtKRW(row.giftTax)}
-                        </strong>
-                      </span>
+                        </p>
+                      </div>
                     </div>
                   </div>
                 );

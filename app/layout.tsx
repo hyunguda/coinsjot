@@ -110,6 +110,11 @@ export default function RootLayout({
                       분할매수 평균단가 계산기
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/calculators/gift-tax" className="hover:text-blue-600">
+                      코인 증여 절세 계산기
+                    </Link>
+                  </li>
                 </ul>
               </div>
               <div>
