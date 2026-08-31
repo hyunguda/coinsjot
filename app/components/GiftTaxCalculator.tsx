@@ -33,6 +33,14 @@ function getGiftTaxRate(taxableBase: number): string {
   return "50%";
 }
 
+function getProgressiveDeduction(taxableBase: number): number {
+  if (taxableBase <= 100_000_000) return 0;
+  if (taxableBase <= 500_000_000) return 10_000_000;
+  if (taxableBase <= 1_000_000_000) return 60_000_000;
+  if (taxableBase <= 3_000_000_000) return 160_000_000;
+  return 460_000_000;
+}
+
 function calcCapitalGainsTax(gain: number): number {
   const taxableBase = Math.max(0, gain - 2_500_000);
   return taxableBase * 0.22;
@@ -86,8 +94,9 @@ export function GiftTaxCalculator() {
       const taxableBase = Math.max(0, totalCurrent - rel.exemption);
       const giftTax = calcGiftTax(taxableBase);
       const rate = getGiftTaxRate(taxableBase);
+      const progressiveDeduction = getProgressiveDeduction(taxableBase);
       const savings = directTax - giftTax;
-      return { ...rel, taxableBase, rate, giftTax, savings };
+      return { ...rel, taxableBase, rate, progressiveDeduction, giftTax, savings };
     });
 
     return { totalAcquisition, totalCurrent, gain, directTax, rows };
@@ -243,6 +252,11 @@ export function GiftTaxCalculator() {
                         <p className="mt-0.5 font-semibold text-gray-700">
                           {row.rate}
                         </p>
+                        {row.progressiveDeduction > 0 && (
+                          <p className="mt-0.5 text-gray-400">
+                            누진공제 −{(row.progressiveDeduction / 10_000).toLocaleString("ko-KR")}만
+                          </p>
+                        )}
                       </div>
                       <div className="text-gray-400">
                         증여세
