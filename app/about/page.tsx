@@ -110,10 +110,17 @@ export default function AboutPage() {
               </p>
             </div>
 
+            <div className="border-l-4 border-blue-500 bg-blue-50 p-4 rounded">
+              <h3 className="font-bold text-blue-900 mb-2">✓ 코인 증여 절세 계산기</h3>
+              <p className="text-blue-800 text-sm">
+                배우자·자녀·부모·형제자매 등 관계별 증여세와 절세 효과를 한눈에 비교합니다. 직접 매도 시 양도세와 증여 후 매도 시 세금을 비교해 최적의 선택을 할 수 있습니다.
+              </p>
+            </div>
+
             <div className="border-l-4 border-gray-400 bg-gray-50 p-4 rounded">
               <h3 className="font-bold text-gray-900 mb-2">📈 추가 계산기</h3>
               <p className="text-gray-700 text-sm">
-                포지션 사이징, 12/31 시가 기록, 100회 거래 챌린지 등이 순차적으로 추가될 예정입니다.
+                12/31 시가 기록, 100회 거래 챌린지 등이 순차적으로 추가될 예정입니다.
               </p>
             </div>
           </div>

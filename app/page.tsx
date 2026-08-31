@@ -134,6 +134,23 @@ export default function Home() {
             계산기 이용하기 →
           </Link>
         </div>
+
+        {/* Calculator 8 */}
+        <div className="border border-gray-200 rounded-lg p-8 hover:shadow-lg transition">
+          <h2 className="text-2xl font-bold mb-4 text-blue-600">
+            코인 증여 절세 계산기
+          </h2>
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            배우자·자녀·부모·형제자매 등 관계별 증여세와 절세 효과를 한눈에 비교합니다.
+            "그냥 팔까, 증여하고 팔까?" 숫자로 바로 확인하세요.
+          </p>
+          <Link
+            href="/calculators/gift-tax"
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
+          >
+            계산기 이용하기 →
+          </Link>
+        </div>
       </section>
 
       {/* Features Section */}
