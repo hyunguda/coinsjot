@@ -117,10 +117,17 @@ export default function AboutPage() {
               </p>
             </div>
 
+            <div className="border-l-4 border-blue-500 bg-blue-50 p-4 rounded">
+              <h3 className="font-bold text-blue-900 mb-2">✓ 12/31 시가 기록 도구</h3>
+              <p className="text-blue-800 text-sm">
+                2026년 12월 31일 기준 가상자산 종가를 종목별로 기록하고 엑셀(CSV)로 저장합니다. 의제취득가액 특례 적용에 꼭 필요한 세금 자료를 미리 준비할 수 있습니다.
+              </p>
+            </div>
+
             <div className="border-l-4 border-gray-400 bg-gray-50 p-4 rounded">
               <h3 className="font-bold text-gray-900 mb-2">📈 추가 계산기</h3>
               <p className="text-gray-700 text-sm">
-                12/31 시가 기록, 100회 거래 챌린지 등이 순차적으로 추가될 예정입니다.
+                100회 거래 챌린지 등이 순차적으로 추가될 예정입니다.
               </p>
             </div>
           </div>

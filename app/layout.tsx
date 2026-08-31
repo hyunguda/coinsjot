@@ -115,6 +115,11 @@ export default function RootLayout({
                       코인 증여 절세 계산기
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/calculators/year-end-price" className="hover:text-blue-600">
+                      12/31 시가 기록 도구
+                    </Link>
+                  </li>
                 </ul>
               </div>
               <div>

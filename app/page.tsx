@@ -151,6 +151,23 @@ export default function Home() {
             계산기 이용하기 →
           </Link>
         </div>
+
+        {/* Calculator 9 */}
+        <div className="border border-gray-200 rounded-lg p-8 hover:shadow-lg transition">
+          <h2 className="text-2xl font-bold mb-4 text-blue-600">
+            12/31 시가 기록 도구
+          </h2>
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            2026년 12월 31일 기준 코인 종가를 종목별로 기록하고 엑셀(CSV)로 저장합니다.
+            의제취득가액 특례 적용에 꼭 필요한 세금 자료를 미리 준비하세요.
+          </p>
+          <Link
+            href="/calculators/year-end-price"
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
+          >
+            계산기 이용하기 →
+          </Link>
+        </div>
       </section>
 
       {/* Features Section */}
