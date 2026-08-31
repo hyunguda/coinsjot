@@ -189,6 +189,12 @@ export function GiftTaxCalculator() {
               <p className="text-xs text-gray-400 mt-1">
                 증여 후 즉시 매도 시 수증자의 양도세 = 0원 (취득가액이 시가로 리셋됨)
               </p>
+              <div className="mt-3 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2.5 text-xs text-amber-800 leading-relaxed">
+                <strong>증여세 계산 방식 안내</strong><br />
+                증여세는 내가 얼마에 샀는지(취득가액)와 무관합니다.<br />
+                <span className="font-mono">과세표준 = 현재 시가 − 관계별 공제한도</span><br />
+                취득가액 공제는 양도소득세에만 해당합니다.
+              </div>
             </div>
             <div className="divide-y divide-gray-50">
               {result.rows.map((row) => {
