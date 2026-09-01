@@ -14,12 +14,15 @@ const parseQty = (v: string) =>
 
 const inputCls =
   "w-full px-2.5 py-2 bg-gray-50 border border-transparent rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-blue-400 outline-none transition";
+const selectCls =
+  "w-full px-2.5 py-2 bg-gray-50 border border-transparent rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-blue-400 outline-none transition appearance-none cursor-pointer";
 
 interface Row {
   id: number;
   name: string;
   ticker: string;
   exchange: string;
+  exchangeCustom: boolean;
   priceRaw: string;
   qtyRaw: string;
   note: string;
@@ -31,6 +34,7 @@ const newRow = (): Row => ({
   name: "",
   ticker: "",
   exchange: "",
+  exchangeCustom: false,
   priceRaw: "",
   qtyRaw: "",
   note: "",
@@ -41,9 +45,9 @@ const EXCHANGES = ["업비트", "빗썸", "코빗", "코인원", "바이낸스",
 export function YearEndPriceRecorder() {
   const [rows, setRows] = useState<Row[]>([newRow(), newRow()]);
 
-  const update = (id: number, field: keyof Omit<Row, "id">, val: string) =>
+  const update = (id: number, patch: Partial<Omit<Row, "id">>) =>
     setRows((prev) =>
-      prev.map((r) => (r.id === id ? { ...r, [field]: val } : r))
+      prev.map((r) => (r.id === id ? { ...r, ...patch } : r))
     );
 
   const remove = (id: number) =>
@@ -157,7 +161,7 @@ export function YearEndPriceRecorder() {
                 type="text"
                 value={row.name}
                 placeholder="비트코인"
-                onChange={(e) => update(row.id, "name", e.target.value)}
+                onChange={(e) => update(row.id, { name: e.target.value })}
                 className={inputCls}
               />
               <input
@@ -165,25 +169,55 @@ export function YearEndPriceRecorder() {
                 value={row.ticker}
                 placeholder="BTC"
                 onChange={(e) =>
-                  update(row.id, "ticker", e.target.value.toUpperCase())
+                  update(row.id, { ticker: e.target.value.toUpperCase() })
                 }
                 className={inputCls}
               />
-              <input
-                type="text"
-                list="exchanges"
-                value={row.exchange}
-                placeholder="업비트"
-                onChange={(e) => update(row.id, "exchange", e.target.value)}
-                className={inputCls}
-              />
+              {/* 거래소: 드롭다운 또는 직접입력 */}
+              {row.exchangeCustom ? (
+                <div className="flex gap-1 items-center">
+                  <input
+                    type="text"
+                    value={row.exchange}
+                    placeholder="거래소명 입력"
+                    autoFocus
+                    onChange={(e) => update(row.id, { exchange: e.target.value })}
+                    className={inputCls}
+                  />
+                  <button
+                    onClick={() => update(row.id, { exchange: "", exchangeCustom: false })}
+                    className="flex-shrink-0 text-gray-300 hover:text-blue-400 transition text-base leading-none"
+                    title="목록으로 돌아가기"
+                  >
+                    ↩
+                  </button>
+                </div>
+              ) : (
+                <select
+                  value={row.exchange}
+                  onChange={(e) => {
+                    if (e.target.value === "__custom__") {
+                      update(row.id, { exchange: "", exchangeCustom: true });
+                    } else {
+                      update(row.id, { exchange: e.target.value });
+                    }
+                  }}
+                  className={selectCls}
+                >
+                  <option value="">거래소 선택</option>
+                  {EXCHANGES.map((ex) => (
+                    <option key={ex} value={ex}>{ex}</option>
+                  ))}
+                  <option value="__custom__">기타 (직접입력)</option>
+                </select>
+              )}
               <input
                 type="text"
                 inputMode="numeric"
                 value={fmtPrice(row.priceRaw)}
                 placeholder="150,000,000"
                 onChange={(e) =>
-                  update(row.id, "priceRaw", parsePrice(e.target.value))
+                  update(row.id, { priceRaw: parsePrice(e.target.value) })
                 }
                 className={`${inputCls} tabular-nums`}
               />
@@ -193,7 +227,7 @@ export function YearEndPriceRecorder() {
                 value={row.qtyRaw}
                 placeholder="0.5"
                 onChange={(e) =>
-                  update(row.id, "qtyRaw", parseQty(e.target.value))
+                  update(row.id, { qtyRaw: parseQty(e.target.value) })
                 }
                 className={`${inputCls} tabular-nums`}
               />
@@ -201,7 +235,7 @@ export function YearEndPriceRecorder() {
                 type="text"
                 value={row.note}
                 placeholder="메모"
-                onChange={(e) => update(row.id, "note", e.target.value)}
+                onChange={(e) => update(row.id, { note: e.target.value })}
                 className={inputCls}
               />
               <button
@@ -213,12 +247,6 @@ export function YearEndPriceRecorder() {
               </button>
             </div>
           ))}
-
-          <datalist id="exchanges">
-            {EXCHANGES.map((ex) => (
-              <option key={ex} value={ex} />
-            ))}
-          </datalist>
 
           <button
             onClick={() => setRows((prev) => [...prev, newRow()])}
