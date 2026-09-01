@@ -2,11 +2,11 @@ import { Metadata } from "next";
 import { YearEndPriceRecorder } from "@/app/components/YearEndPriceRecorder";
 
 export const metadata: Metadata = {
-  title: "12/31 시가 기록 도구 | coinsjot",
+  title: "코인 보유가격 기록기 | coinsjot",
   description:
-    "2026년 12월 31일 기준 가상자산 종가를 종목별로 기록하고 엑셀(CSV)로 내보냅니다. 의제취득가액 특례 적용을 위한 핵심 세금 자료를 미리 준비하세요.",
+    "보유 중인 가상자산의 날짜별 가격을 종목별로 기록하고 엑셀(CSV)로 내보냅니다. 스크린샷 첨부 기능으로 의제취득가액 특례 등 세금 신고에 필요한 증빙 자료를 한 번에 준비하세요.",
   keywords:
-    "2026년 12월 31일 시가, 의제취득가액 기준일, 코인 종가 기록, 가상자산 세금 자료, 코인 취득가액 엑셀",
+    "코인 보유가격 기록, 가상자산 시가 기록, 2026년 12월 31일 시가, 의제취득가액 기준일, 코인 종가 기록, 가상자산 세금 자료",
 };
 
 export default function YearEndPricePage() {
@@ -15,12 +15,12 @@ export default function YearEndPricePage() {
       {/* 헤더 */}
       <div className="mb-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          12/31 시가 기록 도구
+          코인 보유가격 기록기
         </h1>
         <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-          <strong className="text-gray-800">2026년 12월 31일 기준 종가</strong>를 종목별로 기록하고 엑셀 파일로 저장하세요.
+          보유 중인 코인의 <strong className="text-gray-800">날짜별 가격과 수량</strong>을 기록하고 스크린샷과 함께 내보냅니다.
           <br />
-          양도소득세 신고 때 반드시 필요한 핵심 자료입니다.
+          2026년 12월 31일 시가 기록 등 세금 신고 증빙 자료 준비에 활용하세요.
         </p>
 
         <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">

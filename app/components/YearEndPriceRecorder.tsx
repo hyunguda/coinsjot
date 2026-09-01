@@ -148,7 +148,7 @@ export function YearEndPriceRecorder() {
           <div className="px-5 pt-4 pb-2 min-w-[800px]">
             <div className="grid grid-cols-[1.5rem_1.4fr_0.7fr_1fr_0.9fr_1.4fr_0.7fr_1.3fr_1.5rem] gap-2">
               <div />
-              <p className="text-xs text-gray-400">종목명</p>
+              <p className="text-xs text-gray-400">Name</p>
               <p className="text-xs text-gray-400">Ticker</p>
               <p className="text-xs text-gray-400">Exchange</p>
               <p className="text-xs text-gray-400">Date</p>

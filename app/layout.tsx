@@ -117,7 +117,7 @@ export default function RootLayout({
                   </li>
                   <li>
                     <Link href="/calculators/year-end-price" className="hover:text-blue-600">
-                      12/31 시가 기록 도구
+                      코인 보유가격 기록기
                     </Link>
                   </li>
                 </ul>
