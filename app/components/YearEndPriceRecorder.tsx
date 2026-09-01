@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-
-const REF_DATE = "2026-12-31";
+import JSZip from "jszip";
 
 const fmtPrice = (raw: string) => {
   const d = raw.replace(/[^0-9]/g, "");
@@ -23,9 +22,11 @@ interface Row {
   ticker: string;
   exchange: string;
   exchangeCustom: boolean;
+  date: string;
   priceRaw: string;
   qtyRaw: string;
   note: string;
+  screenshot: File | null;
 }
 
 let _nextId = 1;
@@ -35,9 +36,11 @@ const newRow = (): Row => ({
   ticker: "",
   exchange: "",
   exchangeCustom: false,
+  date: "2026-12-31",
   priceRaw: "",
   qtyRaw: "",
   note: "",
+  screenshot: null,
 });
 
 const EXCHANGES = ["업비트", "빗썸", "코빗", "코인원", "바이낸스", "바이비트", "OKX"];
@@ -54,10 +57,7 @@ export function YearEndPriceRecorder() {
     setRows((prev) => prev.filter((r) => r.id !== id));
 
   const filledRows = useMemo(
-    () =>
-      rows.filter(
-        (r) => r.name.trim() || r.ticker.trim() || r.priceRaw
-      ),
+    () => rows.filter((r) => r.name.trim() || r.ticker.trim() || r.priceRaw),
     [rows]
   );
 
@@ -71,196 +71,252 @@ export function YearEndPriceRecorder() {
     [rows]
   );
 
-  const downloadCSV = () => {
+  const hasScreenshots = filledRows.some((r) => r.screenshot);
+
+  const buildCSV = () => {
     const header = [
-      "종목명",
-      "티커",
-      "거래소",
-      "기준일",
-      "종가(원)",
-      "보유수량",
-      "평가금액(원)",
-      "메모",
+      "Name",
+      "Ticker",
+      "Exchange",
+      "Date",
+      "Price (KRW)",
+      "Qty",
+      "Total Value (KRW)",
+      "Note",
+      "Screenshot File",
     ];
     const dataRows = filledRows.map((r) => {
       const price = Number(r.priceRaw) || 0;
       const qty = parseFloat(r.qtyRaw) || 0;
       const evalAmt = price && qty ? Math.round(price * qty) : "";
-      return [
-        r.name,
-        r.ticker,
-        r.exchange,
-        REF_DATE,
-        price || "",
-        qty || "",
-        evalAmt,
-        r.note,
-      ]
+      const screenshotName = r.screenshot
+        ? `screenshots/${r.ticker || r.name || r.id}_${r.date}.${r.screenshot.name.split(".").pop()}`
+        : "";
+      return [r.name, r.ticker, r.exchange, r.date, price || "", qty || "", evalAmt, r.note, screenshotName]
         .map((v) => `"${String(v).replace(/"/g, '""')}"`)
         .join(",");
     });
+    return "﻿" + [header.join(","), ...dataRows].join("\r\n");
+  };
 
-    const csv = "﻿" + [header.join(","), ...dataRows].join("\r\n");
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
+  const exportData = async () => {
+    const csv = buildCSV();
+
+    if (!hasScreenshots) {
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "coinsjot_시가기록.csv";
+      a.click();
+      URL.revokeObjectURL(url);
+      return;
+    }
+
+    const zip = new JSZip();
+    zip.file("coinsjot_시가기록.csv", csv);
+    const folder = zip.folder("screenshots")!;
+    for (const r of filledRows) {
+      if (r.screenshot) {
+        const ext = r.screenshot.name.split(".").pop() || "png";
+        const label = r.ticker || r.name || String(r.id);
+        folder.file(`${label}_${r.date}.${ext}`, r.screenshot);
+      }
+    }
+    const zipBlob = await zip.generateAsync({ type: "blob" });
+    const url = URL.createObjectURL(zipBlob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "coinsjot_2026년12월31일_시가기록.csv";
+    a.download = "coinsjot_시가기록.zip";
     a.click();
     URL.revokeObjectURL(url);
   };
 
   return (
-    <div className="max-w-5xl mx-auto space-y-4">
-      {/* 기준일 배너 */}
-      <div className="bg-blue-600 text-white rounded-2xl px-6 py-4 flex items-center justify-between">
-        <div>
-          <p className="text-xs font-semibold opacity-80 mb-0.5">기준일</p>
-          <p className="text-2xl font-bold tracking-wide">2026년 12월 31일</p>
-        </div>
-        <div className="text-right">
-          <p className="text-xs opacity-80 mb-0.5">의제취득가액 특례 기준일</p>
-          <p className="text-sm font-semibold">세금 신고 핵심 데이터</p>
-        </div>
-      </div>
-
+    <div className="max-w-6xl mx-auto space-y-4">
       {/* 입력 테이블 카드 */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
         <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
           <h2 className="text-sm font-bold text-gray-900 tracking-wide">
             종목별 시가 입력
           </h2>
-          <span className="text-xs text-gray-400">
-            {filledRows.length}개 종목
-          </span>
+          <span className="text-xs text-gray-400">{filledRows.length}개 종목</span>
         </div>
 
-        {/* 컬럼 헤더 */}
-        <div className="px-5 pt-4 pb-2">
-          <div className="grid grid-cols-[1.5rem_1.8fr_0.9fr_1.1fr_1.6fr_1.2fr_1.4fr_1.5rem] gap-2">
-            <div />
-            <p className="text-xs text-gray-400">종목명</p>
-            <p className="text-xs text-gray-400">티커</p>
-            <p className="text-xs text-gray-400">거래소</p>
-            <p className="text-xs text-gray-400">종가 (원)</p>
-            <p className="text-xs text-gray-400">보유수량</p>
-            <p className="text-xs text-gray-400">메모</p>
-            <div />
+        <div className="overflow-x-auto">
+          {/* 컬럼 헤더 */}
+          <div className="px-5 pt-4 pb-2 min-w-[800px]">
+            <div className="grid grid-cols-[1.5rem_1.4fr_0.7fr_1fr_0.9fr_1.4fr_0.7fr_1.3fr_1.5rem] gap-2">
+              <div />
+              <p className="text-xs text-gray-400">종목명</p>
+              <p className="text-xs text-gray-400">Ticker</p>
+              <p className="text-xs text-gray-400">Exchange</p>
+              <p className="text-xs text-gray-400">Date</p>
+              <p className="text-xs text-gray-400">Price (KRW)</p>
+              <p className="text-xs text-gray-400">Qty</p>
+              <p className="text-xs text-gray-400">Note / Screenshot</p>
+              <div />
+            </div>
           </div>
-        </div>
 
-        <div className="px-5 pb-3 space-y-2">
-          {rows.map((row, idx) => (
-            <div
-              key={row.id}
-              className="grid grid-cols-[1.5rem_1.8fr_0.9fr_1.1fr_1.6fr_1.2fr_1.4fr_1.5rem] gap-2 items-center"
-            >
-              <span className="text-xs text-gray-400 text-center">{idx + 1}</span>
+          <div className="px-5 pb-3 space-y-2 min-w-[800px]">
+            {rows.map((row, idx) => (
+              <div
+                key={row.id}
+                className="grid grid-cols-[1.5rem_1.4fr_0.7fr_1fr_0.9fr_1.4fr_0.7fr_1.3fr_1.5rem] gap-2 items-start"
+              >
+                <span className="text-xs text-gray-400 text-center pt-2.5">{idx + 1}</span>
 
-              <input
-                type="text"
-                value={row.name}
-                placeholder="비트코인"
-                onChange={(e) => update(row.id, { name: e.target.value })}
-                className={inputCls}
-              />
-              <input
-                type="text"
-                value={row.ticker}
-                placeholder="BTC"
-                onChange={(e) =>
-                  update(row.id, { ticker: e.target.value.toUpperCase() })
-                }
-                className={inputCls}
-              />
-              {/* 거래소: 드롭다운 또는 직접입력 */}
-              {row.exchangeCustom ? (
-                <div className="flex gap-1 items-center">
+                <input
+                  type="text"
+                  value={row.name}
+                  placeholder="비트코인"
+                  onChange={(e) => update(row.id, { name: e.target.value })}
+                  className={inputCls}
+                />
+
+                <input
+                  type="text"
+                  value={row.ticker}
+                  placeholder="BTC"
+                  onChange={(e) =>
+                    update(row.id, { ticker: e.target.value.toUpperCase() })
+                  }
+                  className={inputCls}
+                />
+
+                {/* Exchange: 드롭다운 or 직접입력 */}
+                {row.exchangeCustom ? (
+                  <div className="flex gap-1 items-center">
+                    <input
+                      type="text"
+                      value={row.exchange}
+                      placeholder="거래소명 입력"
+                      autoFocus
+                      onChange={(e) => update(row.id, { exchange: e.target.value })}
+                      className={inputCls}
+                    />
+                    <button
+                      onClick={() => update(row.id, { exchange: "", exchangeCustom: false })}
+                      className="flex-shrink-0 text-gray-300 hover:text-blue-400 transition text-base leading-none"
+                      title="목록으로 돌아가기"
+                    >
+                      ↩
+                    </button>
+                  </div>
+                ) : (
+                  <select
+                    value={row.exchange}
+                    onChange={(e) => {
+                      if (e.target.value === "__custom__") {
+                        update(row.id, { exchange: "", exchangeCustom: true });
+                      } else {
+                        update(row.id, { exchange: e.target.value });
+                      }
+                    }}
+                    className={selectCls}
+                  >
+                    <option value="">선택</option>
+                    {EXCHANGES.map((ex) => (
+                      <option key={ex} value={ex}>{ex}</option>
+                    ))}
+                    <option value="__custom__">기타 (직접입력)</option>
+                  </select>
+                )}
+
+                <input
+                  type="date"
+                  value={row.date}
+                  onChange={(e) => update(row.id, { date: e.target.value })}
+                  className={inputCls}
+                />
+
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  value={fmtPrice(row.priceRaw)}
+                  placeholder="150,000,000"
+                  onChange={(e) =>
+                    update(row.id, { priceRaw: parsePrice(e.target.value) })
+                  }
+                  className={`${inputCls} tabular-nums`}
+                />
+
+                <input
+                  type="text"
+                  inputMode="decimal"
+                  value={row.qtyRaw}
+                  placeholder="0.5"
+                  onChange={(e) =>
+                    update(row.id, { qtyRaw: parseQty(e.target.value) })
+                  }
+                  className={`${inputCls} tabular-nums`}
+                />
+
+                {/* Note + Screenshot */}
+                <div className="flex flex-col gap-1">
                   <input
                     type="text"
-                    value={row.exchange}
-                    placeholder="거래소명 입력"
-                    autoFocus
-                    onChange={(e) => update(row.id, { exchange: e.target.value })}
+                    value={row.note}
+                    placeholder="Note"
+                    onChange={(e) => update(row.id, { note: e.target.value })}
                     className={inputCls}
                   />
-                  <button
-                    onClick={() => update(row.id, { exchange: "", exchangeCustom: false })}
-                    className="flex-shrink-0 text-gray-300 hover:text-blue-400 transition text-base leading-none"
-                    title="목록으로 돌아가기"
-                  >
-                    ↩
-                  </button>
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    <label className="cursor-pointer flex items-center gap-1 text-[11px] text-gray-400 hover:text-blue-500 transition">
+                      <span>📎</span>
+                      <span>{row.screenshot ? "변경" : "스크린샷"}</span>
+                      <input
+                        type="file"
+                        accept="image/*,.png,.jpg,.jpeg,.webp,.gif"
+                        className="hidden"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0] ?? null;
+                          update(row.id, { screenshot: file });
+                          e.target.value = "";
+                        }}
+                      />
+                    </label>
+                    {row.screenshot && (
+                      <div className="flex items-center gap-1 text-[11px] text-blue-600 min-w-0">
+                        <span className="truncate max-w-[90px]" title={row.screenshot.name}>
+                          {row.screenshot.name}
+                        </span>
+                        <button
+                          onClick={() => update(row.id, { screenshot: null })}
+                          className="text-gray-400 hover:text-red-400 flex-shrink-0 leading-none"
+                        >
+                          ×
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              ) : (
-                <select
-                  value={row.exchange}
-                  onChange={(e) => {
-                    if (e.target.value === "__custom__") {
-                      update(row.id, { exchange: "", exchangeCustom: true });
-                    } else {
-                      update(row.id, { exchange: e.target.value });
-                    }
-                  }}
-                  className={selectCls}
-                >
-                  <option value="">거래소 선택</option>
-                  {EXCHANGES.map((ex) => (
-                    <option key={ex} value={ex}>{ex}</option>
-                  ))}
-                  <option value="__custom__">기타 (직접입력)</option>
-                </select>
-              )}
-              <input
-                type="text"
-                inputMode="numeric"
-                value={fmtPrice(row.priceRaw)}
-                placeholder="150,000,000"
-                onChange={(e) =>
-                  update(row.id, { priceRaw: parsePrice(e.target.value) })
-                }
-                className={`${inputCls} tabular-nums`}
-              />
-              <input
-                type="text"
-                inputMode="decimal"
-                value={row.qtyRaw}
-                placeholder="0.5"
-                onChange={(e) =>
-                  update(row.id, { qtyRaw: parseQty(e.target.value) })
-                }
-                className={`${inputCls} tabular-nums`}
-              />
-              <input
-                type="text"
-                value={row.note}
-                placeholder="메모"
-                onChange={(e) => update(row.id, { note: e.target.value })}
-                className={inputCls}
-              />
-              <button
-                onClick={() => rows.length > 1 && remove(row.id)}
-                disabled={rows.length <= 1}
-                className="text-gray-300 hover:text-red-400 transition disabled:opacity-30 disabled:cursor-not-allowed text-xl leading-none text-center"
-              >
-                ×
-              </button>
-            </div>
-          ))}
 
-          <button
-            onClick={() => setRows((prev) => [...prev, newRow()])}
-            className="w-full py-2.5 border border-dashed border-gray-200 rounded-lg text-sm text-gray-400 hover:border-blue-400 hover:text-blue-500 transition"
-          >
-            + 종목 추가
-          </button>
+                <button
+                  onClick={() => rows.length > 1 && remove(row.id)}
+                  disabled={rows.length <= 1}
+                  className="text-gray-300 hover:text-red-400 transition disabled:opacity-30 disabled:cursor-not-allowed text-xl leading-none text-center pt-2"
+                >
+                  ×
+                </button>
+              </div>
+            ))}
+
+            <button
+              onClick={() => setRows((prev) => [...prev, newRow()])}
+              className="w-full py-2.5 border border-dashed border-gray-200 rounded-lg text-sm text-gray-400 hover:border-blue-400 hover:text-blue-500 transition"
+            >
+              + 종목 추가
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* 요약 + 다운로드 */}
+      {/* 요약 + 내보내기 */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-5 py-4">
-          <p className="text-xs text-gray-400 mb-2">기록 종목 수</p>
+          <p className="text-xs text-gray-400 mb-2">Coins recorded</p>
           <p className="text-2xl font-bold text-gray-900">
             {filledRows.length}
             <span className="text-sm font-normal text-gray-400 ml-1">종목</span>
@@ -268,7 +324,7 @@ export function YearEndPriceRecorder() {
         </div>
 
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-5 py-4">
-          <p className="text-xs text-gray-400 mb-2">총 평가금액</p>
+          <p className="text-xs text-gray-400 mb-2">Total Value (KRW)</p>
           <p className="text-2xl font-bold text-blue-600 tabular-nums">
             {totalValue > 0
               ? Math.round(totalValue).toLocaleString("ko-KR")
@@ -279,19 +335,21 @@ export function YearEndPriceRecorder() {
 
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-5 py-4 flex flex-col justify-center">
           <button
-            onClick={downloadCSV}
+            onClick={exportData}
             disabled={filledRows.length === 0}
             className="w-full py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition text-sm"
           >
-            엑셀로 내보내기 (CSV)
+            {hasScreenshots ? "내보내기 (ZIP)" : "내보내기 (CSV)"}
           </button>
           <p className="text-[11px] text-gray-400 text-center mt-2">
-            Excel에서 바로 열 수 있는 CSV 형식
+            {hasScreenshots
+              ? "CSV + 스크린샷을 ZIP으로 묶어 다운로드"
+              : "Excel에서 바로 열 수 있는 CSV 형식"}
           </p>
         </div>
       </div>
 
-      {/* 저장된 데이터 미리보기 */}
+      {/* 미리보기 */}
       {filledRows.length > 0 && (
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
           <div className="px-5 py-4 border-b border-gray-100">
@@ -323,23 +381,29 @@ export function YearEndPriceRecorder() {
                             {r.exchange}
                           </span>
                         )}
+                        {r.date && (
+                          <span className="ml-2 text-xs font-normal text-gray-400">
+                            {r.date}
+                          </span>
+                        )}
                       </p>
-                      {qty > 0 && (
-                        <p className="text-xs text-gray-400">
-                          보유 {qty.toLocaleString("ko-KR")}개
-                        </p>
-                      )}
+                      <p className="text-xs text-gray-400">
+                        {qty > 0 && `Qty ${qty.toLocaleString("ko-KR")}`}
+                        {r.screenshot && (
+                          <span className="ml-2 text-blue-400">📎 {r.screenshot.name}</span>
+                        )}
+                      </p>
                     </div>
                   </div>
                   <div className="text-right flex-shrink-0">
                     {price > 0 && (
                       <p className="text-sm font-bold tabular-nums text-gray-800">
-                        {price.toLocaleString("ko-KR")}원
+                        {price.toLocaleString("ko-KR")} KRW
                       </p>
                     )}
                     {evalAmt && (
                       <p className="text-xs text-blue-600 tabular-nums font-semibold">
-                        평가 {evalAmt.toLocaleString("ko-KR")}원
+                        ≈ {evalAmt.toLocaleString("ko-KR")} KRW
                       </p>
                     )}
                   </div>
@@ -349,11 +413,9 @@ export function YearEndPriceRecorder() {
 
             {totalValue > 0 && (
               <div className="px-5 py-3.5 flex items-center justify-between bg-blue-50">
-                <span className="text-sm font-bold text-blue-700">
-                  총 평가금액
-                </span>
+                <span className="text-sm font-bold text-blue-700">Total Value</span>
                 <span className="text-sm font-bold tabular-nums text-blue-600">
-                  {Math.round(totalValue).toLocaleString("ko-KR")}원
+                  {Math.round(totalValue).toLocaleString("ko-KR")} KRW
                 </span>
               </div>
             )}
@@ -364,31 +426,29 @@ export function YearEndPriceRecorder() {
       {/* 사용 방법 */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
         <div className="px-5 py-4 border-b border-gray-100">
-          <h3 className="text-sm font-bold text-gray-900 tracking-wide">
-            사용 방법
-          </h3>
+          <h3 className="text-sm font-bold text-gray-900 tracking-wide">사용 방법</h3>
         </div>
         <div className="divide-y divide-gray-50">
           {[
             {
               num: "1",
               title: "종목 정보 입력",
-              desc: "종목명(비트코인), 티커(BTC), 거래소를 입력하세요. 거래소는 업비트·빗썸 등 자주 쓰는 거래소가 자동완성됩니다.",
+              desc: "종목명(비트코인), Ticker(BTC), Exchange를 입력하세요. Exchange는 자주 쓰는 거래소를 드롭다운에서 선택하거나 '기타(직접입력)'로 입력할 수 있습니다.",
             },
             {
               num: "2",
-              title: "2026년 12월 31일 종가 입력",
-              desc: "각 거래소에서 확인한 2026년 12월 31일 기준 종가(원화)를 입력하세요. 24시간 가중평균가 또는 자정 기준가를 기록하는 것이 좋습니다.",
+              title: "날짜와 가격 입력",
+              desc: "Date 칸에 해당 가격을 확인한 날짜를 선택하세요. Price (KRW)는 해당 날짜의 종가(원화)를 입력합니다. Qty는 선택 사항이며 입력 시 총 평가금액이 자동 계산됩니다.",
             },
             {
               num: "3",
-              title: "보유수량 입력 (선택)",
-              desc: "보유 중인 코인 수량을 입력하면 총 평가금액을 자동 계산합니다. 소수점 입력 가능합니다.",
+              title: "스크린샷 첨부 (선택)",
+              desc: "Note / Screenshot 칸의 📎 스크린샷 버튼으로 가격 증빙 이미지를 첨부할 수 있습니다. 스크린샷이 있으면 내보내기 시 ZIP 파일로 묶어 CSV와 함께 다운로드됩니다.",
             },
             {
               num: "4",
-              title: "엑셀로 내보내기",
-              desc: "'엑셀로 내보내기' 버튼을 클릭하면 CSV 파일이 다운로드됩니다. 파일을 열면 Excel에서 바로 확인할 수 있습니다. 이 파일을 잘 보관해 두세요.",
+              title: "내보내기",
+              desc: "스크린샷이 없으면 CSV 파일만 다운로드됩니다. 스크린샷이 있으면 ZIP 파일(CSV + screenshots 폴더)이 다운로드됩니다. ZIP 압축 해제 후 Excel에서 CSV를 열고, screenshots 폴더의 이미지를 참고 자료로 보관하세요.",
             },
           ].map(({ num, title, desc }) => (
             <div key={title} className="px-5 py-4 flex gap-4">
@@ -396,9 +456,7 @@ export function YearEndPriceRecorder() {
                 {num}
               </span>
               <div>
-                <p className="text-sm font-semibold text-gray-800 mb-0.5">
-                  {title}
-                </p>
+                <p className="text-sm font-semibold text-gray-800 mb-0.5">{title}</p>
                 <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
               </div>
             </div>
