@@ -120,14 +120,14 @@ export default function AboutPage() {
             <div className="border-l-4 border-blue-500 bg-blue-50 p-4 rounded">
               <h3 className="font-bold text-blue-900 mb-2">✓ 코인 보유가격 기록기</h3>
               <p className="text-blue-800 text-sm">
-                보유 코인의 날짜별 가격을 기록하고 스크린샷과 함께 엑셀(CSV)로 저장합니다. 2026년 12월 31일 시가 기록 등 세금 신고 증빙 자료를 한 번에 준비할 수 있습니다.
+                보유 코인의 날짜별 가격을 기록하고 스크린샷과 함께 엑셀(XLSX)로 저장합니다. 2026년 12월 31일 시가 기록 등 세금 신고 증빙 자료를 한 번에 준비할 수 있습니다.
               </p>
             </div>
 
-            <div className="border-l-4 border-gray-400 bg-gray-50 p-4 rounded">
-              <h3 className="font-bold text-gray-900 mb-2">📈 추가 계산기</h3>
-              <p className="text-gray-700 text-sm">
-                100회 거래 챌린지 등이 순차적으로 추가될 예정입니다.
+            <div className="border-l-4 border-blue-500 bg-blue-50 p-4 rounded">
+              <h3 className="font-bold text-blue-900 mb-2">✓ 100회 거래 챌린지</h3>
+              <p className="text-blue-800 text-sm">
+                거래를 100회 누적 기록하며 승률·손익비·누적 수익을 자동으로 추적합니다. 기록은 브라우저에 자동 저장되며 엑셀(XLSX)로 내보낼 수 있습니다.
               </p>
             </div>
           </div>

@@ -120,6 +120,11 @@ export default function RootLayout({
                       코인 보유가격 기록기
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/calculators/trade-challenge" className="hover:text-blue-600">
+                      100회 거래 챌린지
+                    </Link>
+                  </li>
                 </ul>
               </div>
               <div>
