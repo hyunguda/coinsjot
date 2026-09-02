@@ -158,11 +158,28 @@ export default function Home() {
             코인 보유가격 기록기
           </h2>
           <p className="text-gray-600 mb-6 leading-relaxed">
-            보유 코인의 날짜별 가격을 기록하고 스크린샷과 함께 엑셀(CSV)로 저장합니다.
+            보유 코인의 날짜별 가격을 기록하고 스크린샷과 함께 엑셀(XLSX)로 저장합니다.
             2026년 12월 31일 시가 기록 등 세금 신고 증빙 자료를 한 번에 준비하세요.
           </p>
           <Link
             href="/calculators/year-end-price"
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
+          >
+            계산기 이용하기 →
+          </Link>
+        </div>
+
+        {/* Calculator 10 */}
+        <div className="border border-gray-200 rounded-lg p-8 hover:shadow-lg transition">
+          <h2 className="text-2xl font-bold mb-4 text-blue-600">
+            100회 거래 챌린지
+          </h2>
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            거래를 100회 누적 기록하며 승률·손익비·누적 수익을 자동으로 추적합니다.
+            기록은 브라우저에 자동 저장되며, 엑셀(XLSX)로 내보낼 수 있습니다.
+          </p>
+          <Link
+            href="/calculators/trade-challenge"
             className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
           >
             계산기 이용하기 →

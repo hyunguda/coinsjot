@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import JSZip from "jszip";
+import * as XLSX from "xlsx";
 
 const fmtPrice = (raw: string) => {
   const d = raw.replace(/[^0-9]/g, "");
@@ -73,17 +74,10 @@ export function YearEndPriceRecorder() {
 
   const hasScreenshots = filledRows.some((r) => r.screenshot);
 
-  const buildCSV = () => {
+  const buildXLSX = () => {
     const header = [
-      "Name",
-      "Ticker",
-      "Exchange",
-      "Date",
-      "Price (KRW)",
-      "Qty",
-      "Total Value (KRW)",
-      "Note",
-      "Screenshot File",
+      "Name", "Ticker", "Exchange", "Date",
+      "Price (KRW)", "Qty", "Total Value (KRW)", "Note", "Screenshot File",
     ];
     const dataRows = filledRows.map((r) => {
       const price = Number(r.priceRaw) || 0;
@@ -92,29 +86,32 @@ export function YearEndPriceRecorder() {
       const screenshotName = r.screenshot
         ? `screenshots/${r.ticker || r.name || r.id}_${r.date}.${r.screenshot.name.split(".").pop()}`
         : "";
-      return [r.name, r.ticker, r.exchange, r.date, price || "", qty || "", evalAmt, r.note, screenshotName]
-        .map((v) => `"${String(v).replace(/"/g, '""')}"`)
-        .join(",");
+      return [r.name, r.ticker, r.exchange, r.date, price || "", qty || "", evalAmt, r.note, screenshotName];
     });
-    return "﻿" + [header.join(","), ...dataRows].join("\r\n");
+    const ws = XLSX.utils.aoa_to_sheet([header, ...dataRows]);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "시가기록");
+    return XLSX.write(wb, { bookType: "xlsx", type: "array" });
   };
 
   const exportData = async () => {
-    const csv = buildCSV();
+    const xlsxBuf = buildXLSX();
+    const xlsxBlob = new Blob([xlsxBuf], {
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    });
 
     if (!hasScreenshots) {
-      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-      const url = URL.createObjectURL(blob);
+      const url = URL.createObjectURL(xlsxBlob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "coinsjot_시가기록.csv";
+      a.download = "coinsjot_시가기록.xlsx";
       a.click();
       URL.revokeObjectURL(url);
       return;
     }
 
     const zip = new JSZip();
-    zip.file("coinsjot_시가기록.csv", csv);
+    zip.file("coinsjot_시가기록.xlsx", xlsxBuf);
     const folder = zip.folder("screenshots")!;
     for (const r of filledRows) {
       if (r.screenshot) {
@@ -339,12 +336,12 @@ export function YearEndPriceRecorder() {
             disabled={filledRows.length === 0}
             className="w-full py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition text-sm"
           >
-            {hasScreenshots ? "내보내기 (ZIP)" : "내보내기 (CSV)"}
+            {hasScreenshots ? "내보내기 (ZIP)" : "내보내기 (XLSX)"}
           </button>
           <p className="text-[11px] text-gray-400 text-center mt-2">
             {hasScreenshots
-              ? "CSV + 스크린샷을 ZIP으로 묶어 다운로드"
-              : "Excel에서 바로 열 수 있는 CSV 형식"}
+              ? "XLSX + 스크린샷을 ZIP으로 묶어 다운로드"
+              : "Excel에서 바로 열 수 있는 XLSX 형식"}
           </p>
         </div>
       </div>
@@ -443,12 +440,12 @@ export function YearEndPriceRecorder() {
             {
               num: "3",
               title: "스크린샷 첨부 (선택)",
-              desc: "Note / Screenshot 칸의 📎 스크린샷 버튼으로 가격 증빙 이미지를 첨부할 수 있습니다. 스크린샷이 있으면 내보내기 시 ZIP 파일로 묶어 CSV와 함께 다운로드됩니다.",
+              desc: "Note / Screenshot 칸의 📎 스크린샷 버튼으로 가격 증빙 이미지를 첨부할 수 있습니다. 스크린샷이 있으면 내보내기 시 ZIP 파일로 묶어 XLSX와 함께 다운로드됩니다.",
             },
             {
               num: "4",
               title: "내보내기",
-              desc: "스크린샷이 없으면 CSV 파일만 다운로드됩니다. 스크린샷이 있으면 ZIP 파일(CSV + screenshots 폴더)이 다운로드됩니다. ZIP 압축 해제 후 Excel에서 CSV를 열고, screenshots 폴더의 이미지를 참고 자료로 보관하세요.",
+              desc: "스크린샷이 없으면 XLSX 파일만 다운로드됩니다. 스크린샷이 있으면 ZIP 파일(XLSX + screenshots 폴더)이 다운로드됩니다. ZIP 압축 해제 후 Excel에서 XLSX를 열고, screenshots 폴더의 이미지를 참고 자료로 보관하세요.",
             },
           ].map(({ num, title, desc }) => (
             <div key={title} className="px-5 py-4 flex gap-4">
