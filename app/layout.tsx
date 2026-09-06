@@ -138,11 +138,6 @@ export default function RootLayout({
                       전체 글 보기
                     </Link>
                   </li>
-                  <li>
-                    <Link href="/insights/2027-capital-gains-tax" className="hover:text-blue-600">
-                      2027년 가상자산 양도소득세 정리
-                    </Link>
-                  </li>
                 </ul>
               </div>
               <div>
