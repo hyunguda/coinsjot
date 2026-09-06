@@ -55,6 +55,9 @@ export default function RootLayout({
               <Link href="/" className="hover:text-blue-600 transition">
                 계산기
               </Link>
+              <Link href="/insights" className="hover:text-blue-600 transition">
+                코인 인사이트
+              </Link>
               <Link href="/about" className="hover:text-blue-600 transition">
                 소개
               </Link>
@@ -71,7 +74,7 @@ export default function RootLayout({
         {/* Footer */}
         <footer className="border-t border-gray-200 bg-gray-50 mt-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
               <div>
                 <h3 className="font-semibold mb-4">계산기</h3>
                 <ul className="space-y-2 text-sm text-gray-600">
@@ -123,6 +126,21 @@ export default function RootLayout({
                   <li>
                     <Link href="/calculators/trade-challenge" className="hover:text-blue-600">
                       100회 거래 챌린지
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-4">코인 인사이트</h3>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  <li>
+                    <Link href="/insights" className="hover:text-blue-600">
+                      전체 글 보기
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/insights/2027-capital-gains-tax" className="hover:text-blue-600">
+                      2027년 가상자산 양도소득세 정리
                     </Link>
                   </li>
                 </ul>
