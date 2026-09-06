@@ -9,6 +9,15 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "deemed-acquisition-price-special",
+    title: "의제취득가액 특례란? 계산 방법과 절세 전략",
+    description:
+      "2026년 12월 31일 시가를 취득가로 인정받는 의제취득가액 특례. 누가 혜택을 받고, 어떻게 계산하며, 어떤 증빙이 필요한지 사례 중심으로 정리했습니다.",
+    date: "2026-09-07",
+    category: "세금",
+    readingTime: 6,
+  },
+  {
     slug: "2027-capital-gains-tax",
     title: "2027년 가상자산 양도소득세 완벽 정리",
     description:
