@@ -9,6 +9,15 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "loss-harvesting-timing",
+    title: "연말 전에 일부러 손절해야 하는 이유",
+    description:
+      "손익통산 구조를 이해하면 연말 손절이 합법적인 절세 전략임을 알 수 있습니다. 손실 실현 타이밍, 재매수 방법, 사례 계산까지 정리했습니다.",
+    date: "2026-09-09",
+    category: "세금",
+    readingTime: 7,
+  },
+  {
     slug: "crypto-gift-tax-strategy",
     title: "코인 증여 절세, 언제 얼마나 효과적인가",
     description:
