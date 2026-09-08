@@ -20,7 +20,6 @@ const ARTICLE = {
   title: "의제취득가액 특례란? 계산 방법과 절세 전략",
   date: "2026-09-07",
   category: "세금",
-  readingTime: 6,
 };
 
 export default function ArticleDeemedAcquisitionPriceSpecial() {
@@ -42,7 +41,6 @@ export default function ArticleDeemedAcquisitionPriceSpecial() {
             {ARTICLE.category}
           </span>
           <span className="text-sm text-gray-400">{formatDate(ARTICLE.date)}</span>
-          <span className="text-sm text-gray-400">· 약 {ARTICLE.readingTime}분 읽기</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold leading-tight mb-4">
           {ARTICLE.title}

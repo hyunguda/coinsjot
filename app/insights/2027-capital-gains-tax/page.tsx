@@ -20,7 +20,6 @@ const ARTICLE = {
   title: "2027년 가상자산 양도소득세 완벽 정리",
   date: "2026-09-06",
   category: "세금",
-  readingTime: 5,
 };
 
 export default function Article2027CapitalGainsTax() {
@@ -42,7 +41,6 @@ export default function Article2027CapitalGainsTax() {
             {ARTICLE.category}
           </span>
           <span className="text-sm text-gray-400">{formatDate(ARTICLE.date)}</span>
-          <span className="text-sm text-gray-400">· 약 {ARTICLE.readingTime}분 읽기</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold leading-tight mb-4">
           {ARTICLE.title}

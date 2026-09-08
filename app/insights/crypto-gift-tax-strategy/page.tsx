@@ -20,7 +20,6 @@ const ARTICLE = {
   title: "코인 증여 절세, 언제 얼마나 효과적인가",
   date: "2026-09-08",
   category: "세금",
-  readingTime: 7,
 };
 
 export default function ArticleCryptoGiftTaxStrategy() {
@@ -42,7 +41,6 @@ export default function ArticleCryptoGiftTaxStrategy() {
             {ARTICLE.category}
           </span>
           <span className="text-sm text-gray-400">{formatDate(ARTICLE.date)}</span>
-          <span className="text-sm text-gray-400">· 약 {ARTICLE.readingTime}분 읽기</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold leading-tight mb-4">
           {ARTICLE.title}

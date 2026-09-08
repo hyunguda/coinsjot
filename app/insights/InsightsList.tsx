@@ -27,11 +27,10 @@ export default function InsightsList({ articles }: { articles: InsightArticle[] 
   return (
     <>
       {/* 테이블 헤더 */}
-      <div className="hidden sm:grid grid-cols-[110px_68px_1fr_44px] gap-4 px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wide border-b border-gray-200">
+      <div className="hidden sm:grid grid-cols-[110px_68px_1fr] gap-4 px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wide border-b border-gray-200">
         <span>날짜</span>
         <span>분류</span>
         <span>제목</span>
-        <span className="text-right">읽기</span>
       </div>
 
       {/* 글 목록 */}
@@ -40,7 +39,7 @@ export default function InsightsList({ articles }: { articles: InsightArticle[] 
           <Link
             key={article.slug}
             href={`/insights/${article.slug}`}
-            className="group flex flex-col sm:grid sm:grid-cols-[110px_68px_1fr_44px] gap-1 sm:gap-4 sm:items-center px-4 py-3.5 hover:bg-gray-50 transition-colors"
+            className="group flex flex-col sm:grid sm:grid-cols-[110px_68px_1fr] gap-1 sm:gap-4 sm:items-center px-4 py-3.5 hover:bg-gray-50 transition-colors"
           >
             <span className="text-sm text-gray-400 order-2 sm:order-1">
               {formatDate(article.date)}
@@ -54,9 +53,6 @@ export default function InsightsList({ articles }: { articles: InsightArticle[] 
             </span>
             <span className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors order-3">
               {article.title}
-            </span>
-            <span className="text-xs text-gray-400 text-right order-4">
-              {article.readingTime}분
             </span>
           </Link>
         ))}
