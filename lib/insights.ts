@@ -9,6 +9,15 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-gift-tax-strategy",
+    title: "코인 증여 절세, 언제 얼마나 효과적인가",
+    description:
+      "증여 후 매도하면 수증자의 취득가액이 시가로 리셋되어 양도세를 줄일 수 있습니다. 관계별 공제 한도·증여세율·직접 매도와의 비교까지 사례 중심으로 정리했습니다.",
+    date: "2026-09-08",
+    category: "세금",
+    readingTime: 7,
+  },
+  {
     slug: "deemed-acquisition-price-special",
     title: "의제취득가액 특례란? 계산 방법과 절세 전략",
     description:
