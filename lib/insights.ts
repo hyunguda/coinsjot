@@ -8,6 +8,38 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-tax-filing-2027",
+    title: "2027년 코인 세금 신고 방법 완벽 정리",
+    description:
+      "2027년부터 시작되는 가상자산 양도소득세, 어떻게 신고해야 할까요? 신고 방법·기한·필요 서류·종합소득세와의 차이까지 정리했습니다.",
+    date: "2026-09-13",
+    category: "신고 준비",
+  },
+  {
+    slug: "exchange-history-export",
+    title: "업비트·빗썸 거래 내역 보관·추출 방법",
+    description:
+      "세금 신고를 위해 꼭 필요한 거래 내역, 언제 어떻게 내보내야 할까요? 업비트·빗썸 기준 CSV 추출 방법과 보관 요령을 정리했습니다.",
+    date: "2026-09-12",
+    category: "신고 준비",
+  },
+  {
+    slug: "transaction-fee-deduction",
+    title: "거래 수수료, 세금에서 빼도 될까? 취득가 포함 방법 정리",
+    description:
+      "코인 매수·매도 시 낸 거래 수수료는 취득가액에 포함시켜 세금을 줄일 수 있습니다. 포함 가능한 비용의 범위와 계산 방법을 정리했습니다.",
+    date: "2026-09-11",
+    category: "세금",
+  },
+  {
+    slug: "staking-airdrop-tax",
+    title: "스테이킹·에어드롭 수익, 세금 내야 할까?",
+    description:
+      "스테이킹 보상과 에어드롭으로 받은 코인도 2027년부터 세금 대상입니다. 과세 시점, 취득가액 계산법, 절세 포인트까지 정리했습니다.",
+    date: "2026-09-10",
+    category: "세금",
+  },
+  {
     slug: "loss-harvesting-timing",
     title: "연말 전에 일부러 손절해야 하는 이유",
     description:
