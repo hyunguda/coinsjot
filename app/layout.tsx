@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://coinsjot.com"),
   title: "coinsjot | 가상자산 세금·손익 계산기",
   description: "코인 투자자를 위한 양도소득세, 손익통산, 선물 청산가 계산 도구 모음",
   keywords: "가상자산, 양도소득세, 의제취득가액, 손익통산, 코인 세금, 계산기",
