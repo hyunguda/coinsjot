@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "transaction-fee-deduction",
+    title: "거래 수수료, 세금에서 빼도 될까? 취득가 포함 방법 정리",
+    description:
+      "코인 매수·매도 시 발생하는 거래 수수료는 취득가액에 포함할 수 있습니다. 수수료 처리 방법, 취득가 계산 사례, 절세 포인트까지 정리했습니다.",
+    date: "2026-09-11",
+    category: "세금",
+  },
+  {
     slug: "staking-airdrop-tax",
     title: "스테이킹·에어드롭 수익, 세금 내야 할까?",
     description:
