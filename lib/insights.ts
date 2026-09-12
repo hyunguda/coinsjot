@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "exchange-history-export",
+    title: "업비트·빗썸 거래 내역 보관·추출 방법",
+    description:
+      "세금 신고를 위해 꼭 필요한 거래 내역, 언제 어떻게 내보내야 할까요? 업비트·빗썸 기준 CSV 추출 방법과 보관 요령을 정리했습니다.",
+    date: "2026-09-12",
+    category: "신고 준비",
+  },
+  {
     slug: "transaction-fee-deduction",
     title: "거래 수수료, 세금에서 빼도 될까? 취득가 포함 방법 정리",
     description:
