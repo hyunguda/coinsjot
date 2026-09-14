@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "coin-acquisition-cost-method",
+    title: "코인 취득가액 계산법: 이동평균법이란?",
+    description:
+      "같은 코인을 여러 번 나눠 샀다면 취득가액을 어떻게 계산할까요? 한국 세법이 정한 이동평균법의 계산 방식과 실제 사례를 정리했습니다.",
+    date: "2026-09-15",
+    category: "세금",
+  },
+  {
     slug: "overseas-exchange-tax",
     title: "바이낸스·바이비트 해외 거래소 코인도 세금 신고해야 할까?",
     description:
