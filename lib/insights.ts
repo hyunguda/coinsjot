@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "overseas-exchange-tax",
+    title: "바이낸스·바이비트 해외 거래소 코인도 세금 신고해야 할까?",
+    description:
+      "국내 거래소와 달리 해외 거래소는 거래 내역을 세무당국에 보고하지 않습니다. 그래도 세금 신고 의무는 있습니다. 신고 방법과 주의사항을 정리했습니다.",
+    date: "2026-09-14",
+    category: "세금신고",
+  },
+  {
     slug: "crypto-tax-filing-2027",
     title: "2027년 코인 세금 신고 방법 완벽 정리",
     description:
