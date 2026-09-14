@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   description:
     "보유 중인 여러 코인의 손익을 한 번에 합산해 실제 납부세액과 세후 수익률을 계산합니다. 익절·손절 상계로 세금을 줄이는 방법을 확인하세요.",
   keywords: "코인 포트폴리오 세금, 코인 합산 세금, 가상화폐 양도소득세, 손익통산, 손절 상계, 기본공제, 계산기",
+  alternates: {
+    canonical: "https://coinsjot.com/calculators/profit-loss-simulator",
+  },
 };
 
 export default function ProfitLossSimulatorPage() {

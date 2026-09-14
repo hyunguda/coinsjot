@@ -14,6 +14,9 @@ export const metadata: Metadata = {
       "증여 후 매도하면 수증자의 취득가액이 시가로 리셋되어 양도세를 줄일 수 있습니다. 관계별 공제 한도·증여세율·직접 매도와의 비교까지 사례 중심으로 정리했습니다.",
     type: "article",
   },
+  alternates: {
+    canonical: "https://coinsjot.com/insights/crypto-gift-tax-strategy",
+  },
 };
 
 const ARTICLE = {

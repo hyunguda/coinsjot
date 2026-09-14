@@ -3,6 +3,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "소개 | coinsjot",
   description: "coinsjot 프로젝트 소개 및 비전",
+  alternates: {
+    canonical: "https://coinsjot.com/about",
+  },
 };
 
 export default function AboutPage() {

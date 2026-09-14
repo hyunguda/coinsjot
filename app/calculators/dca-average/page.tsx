@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     "코인 분할매수 시 차수별 매수가와 금액(또는 수량)을 입력하면 평균 단가, 총 투자금액, 총 수량을 즉시 계산합니다. 금액 입력·수량 입력 두 가지 모드 지원.",
   keywords:
     "분할매수 계산기, DCA 계산기, 평균단가 계산기, 코인 평균매수가, 물타기 계산기, 비트코인 평균단가",
+  alternates: {
+    canonical: "https://coinsjot.com/calculators/dca-average",
+  },
 };
 
 export default function DCAPage() {

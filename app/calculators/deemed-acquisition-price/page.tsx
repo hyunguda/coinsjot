@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   description:
     "2027년 시행되는 가상화폐 양도소득세를 쉽게 계산하세요. 보유 코인의 세금 부담을 즉시 시뮬레이션하고 절세 방안을 확인할 수 있습니다.",
   keywords: "가상화폐 세금, 코인 세금, 양도소득세, 계산기, 절세",
+  alternates: {
+    canonical: "https://coinsjot.com/calculators/deemed-acquisition-price",
+  },
 };
 
 export default function DeemedAcquisitionPage() {

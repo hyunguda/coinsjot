@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     "진입금액, 레버리지, 엑시트금액을 입력하면 수익률·청산가·청산까지 거리를 즉시 계산합니다. 롱·숏 포지션 모두 지원.",
   keywords:
     "레버리지 계산기, 선물 계산기, 청산가 계산기, 코인 선물 손익, 레버리지 손익, 코인 레버리지, 청산가 계산, 선물거래 계산기",
+  alternates: {
+    canonical: "https://coinsjot.com/calculators/leverage-pnl",
+  },
 };
 
 export default function LeveragePnLPage() {

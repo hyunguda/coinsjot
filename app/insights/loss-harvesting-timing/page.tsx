@@ -14,6 +14,9 @@ export const metadata: Metadata = {
       "코인 손익통산 구조를 이용하면 연말에 손실을 실현해 이익을 줄이고 세금을 낮출 수 있습니다. 타이밍 전략과 재매수 방법, 사례 계산까지 정리했습니다.",
     type: "article",
   },
+  alternates: {
+    canonical: "https://coinsjot.com/insights/loss-harvesting-timing",
+  },
 };
 
 const ARTICLE = {

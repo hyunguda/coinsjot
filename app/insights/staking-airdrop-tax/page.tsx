@@ -14,6 +14,9 @@ export const metadata: Metadata = {
       "스테이킹 보상과 에어드롭으로 받은 코인도 2027년부터 세금 대상입니다. 과세 시점, 취득가액 계산법, 절세 포인트까지 정리했습니다.",
     type: "article",
   },
+  alternates: {
+    canonical: "https://coinsjot.com/insights/staking-airdrop-tax",
+  },
 };
 
 const ARTICLE = {

@@ -14,6 +14,9 @@ export const metadata: Metadata = {
       "2027년부터 시작되는 가상자산 양도소득세, 어떻게 신고해야 할까요? 신고 방법, 기한, 필요 서류, 종합소득세와의 차이까지 정리했습니다.",
     type: "article",
   },
+  alternates: {
+    canonical: "https://coinsjot.com/insights/crypto-tax-filing-2027",
+  },
 };
 
 const ARTICLE = {

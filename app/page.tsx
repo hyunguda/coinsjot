@@ -1,4 +1,14 @@
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "coinsjot | 가상자산 세금·손익 계산기",
+  description: "코인 투자자를 위한 양도소득세, 손익통산, 선물 청산가 계산 도구 모음. 브라우저에서 바로 계산하세요.",
+  keywords: "가상자산 계산기, 코인 세금 계산기, 양도소득세, 의제취득가액, 손익통산, 선물 청산가",
+  alternates: {
+    canonical: "https://coinsjot.com",
+  },
+};
 
 export default function Home() {
   return (

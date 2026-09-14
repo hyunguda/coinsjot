@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "100회 거래 챌린지 | coinsjot",
   description:
     "코인 거래를 100회 누적 기록하며 승률·손익비·누적 수익을 추적하는 자기관리 도구. 데이터는 브라우저에만 저장됩니다.",
+  alternates: {
+    canonical: "https://coinsjot.com/calculators/trade-challenge",
+  },
 };
 
 export default function TradChallengePage() {

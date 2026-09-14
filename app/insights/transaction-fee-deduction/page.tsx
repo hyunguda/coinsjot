@@ -14,6 +14,9 @@ export const metadata: Metadata = {
       "코인 매수·매도 시 낸 거래 수수료는 취득가액에 포함시켜 세금을 줄일 수 있습니다. 포함 가능한 비용의 범위와 계산 방법을 정리했습니다.",
     type: "article",
   },
+  alternates: {
+    canonical: "https://coinsjot.com/insights/transaction-fee-deduction",
+  },
 };
 
 const ARTICLE = {

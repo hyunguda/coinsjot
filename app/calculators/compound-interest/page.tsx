@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     "초기 투자금, 수익률, 총 회차를 입력하면 복리 효과로 자산이 얼마나 성장하는지 회차별로 계산합니다. 회차당 추가 투자금(적립식)도 지원합니다.",
   keywords:
     "복리 계산기, 코인 복리, 가상화폐 복리, 복리 수익 시뮬레이터, 회차별 복리, 적립식 복리, 코인 수익 계산",
+  alternates: {
+    canonical: "https://coinsjot.com/calculators/compound-interest",
+  },
 };
 
 export default function CompoundInterestPage() {

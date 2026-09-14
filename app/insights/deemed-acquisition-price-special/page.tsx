@@ -14,6 +14,9 @@ export const metadata: Metadata = {
       "2026년 12월 31일 시가를 취득가로 인정받는 의제취득가액 특례. 누가 혜택을 받고, 어떻게 계산하며, 어떤 증빙이 필요한지 사례 중심으로 정리했습니다.",
     type: "article",
   },
+  alternates: {
+    canonical: "https://coinsjot.com/insights/deemed-acquisition-price-special",
+  },
 };
 
 const ARTICLE = {

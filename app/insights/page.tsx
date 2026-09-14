@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   description:
     "가상자산 세금, 투자 전략, 업계 동향까지. 코인 투자자에게 필요한 정보를 정리합니다.",
   keywords: "가상자산 세금, 코인 투자, 양도소득세, 가상화폐 정보",
+  alternates: {
+    canonical: "https://coinsjot.com/insights",
+  },
 };
 
 export default function InsightsPage() {

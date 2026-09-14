@@ -3,6 +3,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "이용약관 | coinsjot",
   description: "coinsjot의 이용약관 및 면책조항",
+  alternates: {
+    canonical: "https://coinsjot.com/terms",
+  },
 };
 
 export default function TermsPage() {

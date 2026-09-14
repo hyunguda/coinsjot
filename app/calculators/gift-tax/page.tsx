@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     "가상화폐를 배우자·자녀·부모·형제자매에게 증여할 때 증여세와 절세 효과를 관계별로 비교합니다. 직접 매도 시 양도세와 증여 시 증여세를 한눈에 비교하세요.",
   keywords:
     "코인 증여세 계산기, 가상자산 증여 절세, 비트코인 증여세, 코인 증여 세금, 가상화폐 절세 방법, 코인 증여 양도세",
+  alternates: {
+    canonical: "https://coinsjot.com/calculators/gift-tax",
+  },
 };
 
 export default function GiftTaxPage() {

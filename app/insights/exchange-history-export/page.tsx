@@ -14,6 +14,9 @@ export const metadata: Metadata = {
       "세금 신고를 위해 꼭 필요한 거래 내역, 언제 어떻게 내보내야 할까요? 업비트·빗썸 기준 CSV 추출 방법과 보관 요령을 정리했습니다.",
     type: "article",
   },
+  alternates: {
+    canonical: "https://coinsjot.com/insights/exchange-history-export",
+  },
 };
 
 const ARTICLE = {

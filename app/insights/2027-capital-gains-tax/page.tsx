@@ -14,6 +14,9 @@ export const metadata: Metadata = {
       "두 번의 연기 끝에 2027년 1월부터 시행되는 가상자산 양도소득세. 세율·기본공제·의제취득가액 특례까지 핵심만 정리했습니다.",
     type: "article",
   },
+  alternates: {
+    canonical: "https://coinsjot.com/insights/2027-capital-gains-tax",
+  },
 };
 
 const ARTICLE = {

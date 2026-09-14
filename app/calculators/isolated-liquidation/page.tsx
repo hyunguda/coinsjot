@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     "격리마진 방식의 선물 포지션 청산가를 계산합니다. 내가 넣는 증거금·레버리지·진입가를 입력하면 청산가와 포지션 크기를 즉시 계산합니다. 롱·숏 모두 지원.",
   keywords:
     "격리마진 청산가, isolated margin 청산가, 선물 청산가 계산기, 청산가 계산, 격리 선물, 코인 청산가, 파산가, 강제청산가",
+  alternates: {
+    canonical: "https://coinsjot.com/calculators/isolated-liquidation",
+  },
 };
 
 export default function IsolatedLiquidationPage() {

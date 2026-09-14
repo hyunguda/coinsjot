@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     "보유 중인 가상자산의 날짜별 가격을 종목별로 기록하고 엑셀(CSV)로 내보냅니다. 스크린샷 첨부 기능으로 의제취득가액 특례 등 세금 신고에 필요한 증빙 자료를 한 번에 준비하세요.",
   keywords:
     "코인 보유가격 기록, 가상자산 시가 기록, 2026년 12월 31일 시가, 의제취득가액 기준일, 코인 종가 기록, 가상자산 세금 자료",
+  alternates: {
+    canonical: "https://coinsjot.com/calculators/year-end-price",
+  },
 };
 
 export default function YearEndPricePage() {

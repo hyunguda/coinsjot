@@ -3,6 +3,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "개인정보처리방침 | coinsjot",
   description: "coinsjot의 개인정보처리방침",
+  alternates: {
+    canonical: "https://coinsjot.com/privacy",
+  },
 };
 
 export default function PrivacyPage() {
