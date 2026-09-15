@@ -3,21 +3,23 @@ import { insights } from "@/lib/insights";
 
 const BASE = "https://coinsjot.com";
 
+const CALCULATOR_DATES: Record<string, string> = {
+  "deemed-acquisition-price": "2026-08-24",
+  "profit-loss-simulator":    "2026-08-25",
+  "compound-interest":        "2026-08-26",
+  "leverage-pnl":             "2026-08-27",
+  "isolated-liquidation":     "2026-08-28",
+  "cross-liquidation":        "2026-08-29",
+  "dca-average":              "2026-08-30",
+  "gift-tax":                 "2026-08-31",
+  "year-end-price":           "2026-09-01",
+  "trade-challenge":          "2026-09-02",
+};
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const calculators = [
-    "deemed-acquisition-price",
-    "profit-loss-simulator",
-    "compound-interest",
-    "leverage-pnl",
-    "isolated-liquidation",
-    "cross-liquidation",
-    "dca-average",
-    "gift-tax",
-    "year-end-price",
-    "trade-challenge",
-  ].map((slug) => ({
+  const calculators = Object.entries(CALCULATOR_DATES).map(([slug, date]) => ({
     url: `${BASE}/calculators/${slug}`,
-    lastModified: new Date(),
+    lastModified: new Date(date),
     changeFrequency: "monthly" as const,
     priority: 0.9,
   }));
@@ -30,13 +32,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   return [
-    { url: BASE, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
-    { url: `${BASE}/insights`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+    { url: BASE,               lastModified: new Date("2026-09-16"), changeFrequency: "weekly", priority: 1 },
+    { url: `${BASE}/insights`, lastModified: new Date("2026-09-16"), changeFrequency: "weekly", priority: 0.9 },
     ...calculators,
     ...insightPages,
-    { url: `${BASE}/about`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.5 },
-    { url: `${BASE}/contact`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.5 },
-    { url: `${BASE}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
-    { url: `${BASE}/terms`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE}/about`,   lastModified: new Date("2026-08-24"), changeFrequency: "yearly", priority: 0.5 },
+    { url: `${BASE}/contact`, lastModified: new Date("2026-08-24"), changeFrequency: "yearly", priority: 0.5 },
+    { url: `${BASE}/privacy`, lastModified: new Date("2026-08-24"), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE}/terms`,   lastModified: new Date("2026-08-24"), changeFrequency: "yearly", priority: 0.3 },
   ];
 }

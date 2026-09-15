@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-tax-penalty",
+    title: "코인 세금 신고 안 하면? 가산세·불이익 완벽 정리",
+    description:
+      "2027년부터 코인 세금을 신고하지 않으면 무신고 가산세(20%)와 납부지연 가산세가 붙습니다. 국세청이 거래 내역을 파악하는 방법과 미신고 시 불이익을 정리했습니다.",
+    date: "2026-09-16",
+    category: "세금신고",
+  },
+  {
     slug: "coin-acquisition-cost-method",
     title: "코인 취득가액 계산법: 이동평균법이란?",
     description:
