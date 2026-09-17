@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-health-insurance",
+    title: "코인 수익이 많으면 건강보험료도 오른다",
+    description:
+      "2027년 코인 양도소득세 시행 후 지역가입자는 코인 수익이 건강보험료 산정에 포함될 수 있습니다. 직장가입자·지역가입자별 차이와 예상 추가 보험료를 정리했습니다.",
+    date: "2026-09-17",
+    category: "세금",
+  },
+  {
     slug: "crypto-tax-penalty",
     title: "코인 세금 신고 안 하면? 가산세·불이익 완벽 정리",
     description:
