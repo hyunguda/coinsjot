@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-loss-carryforward",
+    title: "코인 손실은 내년으로 못 넘긴다 — 이월공제 불가, 연내 손익통산이 전부다",
+    description:
+      "가상자산 손실은 다음 해로 이월할 수 없습니다. 올해 발생한 손실은 올해 안에 다른 코인 수익과 상계해야만 세금을 줄일 수 있습니다. 이월공제 불가의 의미와 연말 전 실행 전략을 정리했습니다.",
+    date: "2026-09-18",
+    category: "세금",
+  },
+  {
     slug: "crypto-health-insurance",
     title: "코인 수익이 많으면 건강보험료도 오른다",
     description:
