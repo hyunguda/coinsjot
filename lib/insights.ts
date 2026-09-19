@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-separate-taxation",
+    title: "코인 소득은 분리과세다 — 연봉과 합산되지 않는 이유",
+    description:
+      "가상자산 양도소득세는 22% 분리과세입니다. 근로소득·사업소득과 합산되지 않아 연봉이 높아도 누진세가 적용되지 않습니다. 분리과세의 의미와 실제 절세 효과를 정리했습니다.",
+    date: "2026-09-19",
+    category: "세금",
+  },
+  {
     slug: "crypto-loss-carryforward",
     title: "코인 손실은 내년으로 못 넘긴다 — 이월공제 불가, 연내 손익통산이 전부다",
     description:
