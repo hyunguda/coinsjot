@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-swap-tax",
+    title: "코인을 다른 코인으로 바꾸면 세금이 발생할까?",
+    description:
+      "비트코인을 이더리움으로 교환하는 것도 세금 신고 대상입니다. 2027년부터 코인↔코인 스왑은 양도로 간주해 과세됩니다. 과세 기준, 계산 방법, DEX 처리까지 정리했습니다.",
+    date: "2026-09-20",
+    category: "세금",
+  },
+  {
     slug: "crypto-separate-taxation",
     title: "코인 소득은 분리과세다 — 연봉과 합산되지 않는 이유",
     description:
