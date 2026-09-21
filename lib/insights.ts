@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-basic-deduction",
+    title: "코인 소액 투자자도 세금 내야 할까? 250만원 기본공제 완벽 정리",
+    description:
+      "가상자산 양도소득세에는 연 250만원 기본공제가 적용됩니다. 연간 수익이 250만원 이하라면 세금은 0원입니다. 기본공제 계산 방법, 손익통산과의 순서, 주의사항을 정리했습니다.",
+    date: "2026-09-21",
+    category: "세금",
+  },
+  {
     slug: "crypto-swap-tax",
     title: "코인을 다른 코인으로 바꾸면 세금이 발생할까?",
     description:
