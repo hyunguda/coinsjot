@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-unrealized-gains",
+    title: "코인 보유만 해도 세금이 붙을까? 미실현 수익 과세 여부 완벽 정리",
+    description:
+      "코인을 팔지 않고 보유만 하면 세금이 없습니다. 가상자산 양도소득세는 '실현주의'를 따라 매도·교환 시에만 과세됩니다. 미실현 수익의 과세 여부와 코인↔코인 스왑 주의사항을 정리했습니다.",
+    date: "2026-09-22",
+    category: "세금",
+  },
+  {
     slug: "crypto-basic-deduction",
     title: "코인 소액 투자자도 세금 내야 할까? 250만원 기본공제 완벽 정리",
     description:
