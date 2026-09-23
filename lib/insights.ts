@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-vs-stock-tax",
+    title: "코인과 주식 세금 차이 완벽 비교 — 세율·공제·이월공제까지",
+    description:
+      "코인과 주식은 같은 22% 세율이지만 세금 구조가 다릅니다. 국내 주식 소액주주는 양도세 면제, 해외주식은 3년 이월공제 가능, 코인은 이월공제 불가. 핵심 차이를 정리했습니다.",
+    date: "2026-09-23",
+    category: "세금",
+  },
+  {
     slug: "crypto-unrealized-gains",
     title: "코인 보유만 해도 세금이 붙을까? 미실현 수익 과세 여부 완벽 정리",
     description:

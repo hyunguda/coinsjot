@@ -32,8 +32,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   return [
-    { url: BASE,               lastModified: new Date("2026-09-22"), changeFrequency: "weekly", priority: 1 },
-    { url: `${BASE}/insights`, lastModified: new Date("2026-09-22"), changeFrequency: "weekly", priority: 0.9 },
+    { url: BASE,               lastModified: new Date("2026-09-23"), changeFrequency: "weekly", priority: 1 },
+    { url: `${BASE}/insights`, lastModified: new Date("2026-09-23"), changeFrequency: "weekly", priority: 0.9 },
     ...calculators,
     ...insightPages,
     { url: `${BASE}/about`,   lastModified: new Date("2026-08-24"), changeFrequency: "yearly", priority: 0.5 },
