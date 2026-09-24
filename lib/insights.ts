@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-spouse-tax-split",
+    title: "코인 부부 명의 분산 — 기본공제 500만원으로 두 배 활용하는 방법",
+    description:
+      "기본공제 250만원은 '1인당' 적용됩니다. 배우자와 코인을 나눠 보유하면 공제를 500만원까지 활용할 수 있습니다. 계산 사례, 증여세 주의사항, 실행 조건을 정리했습니다.",
+    date: "2026-09-24",
+    category: "세금",
+  },
+  {
     slug: "crypto-vs-stock-tax",
     title: "코인과 주식 세금 차이 완벽 비교 — 세율·공제·이월공제까지",
     description:
