@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-mining-tax",
+    title: "코인 채굴(마이닝) 수익, 세금은 어떻게 낼까?",
+    description:
+      "채굴로 받은 코인은 채굴 시점 시가가 취득가액이 됩니다. 이후 매도할 때 그 차익에 22% 양도소득세가 붙습니다. 취득가액 기록 방법, 채굴 비용 공제, 전업 채굴자 사업소득 여부까지 정리했습니다.",
+    date: "2026-09-25",
+    category: "세금",
+  },
+  {
     slug: "crypto-spouse-tax-split",
     title: "코인 부부 명의 분산 — 기본공제 500만원으로 두 배 활용하는 방법",
     description:
