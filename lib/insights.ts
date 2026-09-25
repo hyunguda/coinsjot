@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-no-acquisition-record",
+    title: "취득가액 기록 없는 코인, 세금 어떻게 계산할까?",
+    description:
+      "코인 구매 기록이 없으면 취득가액을 0원으로 봐 세금이 폭탄이 될 수 있습니다. 거래소 내역 복구, 의제취득가액 특례 활용, 취득가 입증 방법을 단계별로 정리했습니다.",
+    date: "2026-09-26",
+    category: "세금",
+  },
+  {
     slug: "crypto-mining-tax",
     title: "코인 채굴(마이닝) 수익, 세금은 어떻게 낼까?",
     description:
