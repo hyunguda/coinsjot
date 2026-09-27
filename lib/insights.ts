@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-wallet-transfer-tax",
+    title: "내 지갑 간 코인 이전, 세금이 발생할까?",
+    description:
+      "거래소에서 개인 지갑으로 코인을 옮기거나, 내 지갑 두 개 사이에 전송해도 세금이 발생하지 않습니다. 세금이 생기는 시점은 '양도'뿐입니다. 지갑 이전과 양도의 차이, 주의사항을 정리했습니다.",
+    date: "2026-09-27",
+    category: "세금",
+  },
+  {
     slug: "crypto-no-acquisition-record",
     title: "취득가액 기록 없는 코인, 세금 어떻게 계산할까?",
     description:
