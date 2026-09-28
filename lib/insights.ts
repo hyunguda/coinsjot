@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "exchange-withholding-tax",
+    title: "거래소 원천징수란? 2027년부터 업비트·빗썸이 세금을 자동 공제한다",
+    description:
+      "2027년부터 국내 가상자산 거래소는 매도 수익의 22%를 자동으로 원천징수합니다. 원천징수 계산 방법, 기본공제 환급 절차, 해외 거래소와의 차이까지 정리했습니다.",
+    date: "2026-09-28",
+    category: "세금",
+  },
+  {
     slug: "crypto-wallet-transfer-tax",
     title: "내 지갑 간 코인 이전, 세금이 발생할까?",
     description:
