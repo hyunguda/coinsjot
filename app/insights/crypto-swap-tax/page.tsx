@@ -161,7 +161,7 @@ export default function ArticleCryptoSwapTax() {
                 </tr>
                 <tr>
                   <td className="px-4 py-3 font-medium">취득가액</td>
-                  <td className="px-4 py-3">내보낸 코인의 이동평균 취득가</td>
+                  <td className="px-4 py-3">내보낸 코인의 총평균 취득가</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-3 font-medium">거래 증빙</td>

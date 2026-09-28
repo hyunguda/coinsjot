@@ -242,7 +242,7 @@ export default function ArticleDeemedAcquisitionPriceSpecial() {
               {
                 num: "04",
                 title: "분할 매수 코인의 취득가 계산",
-                desc: "같은 코인을 여러 번에 걸쳐 매수했다면 평균 매수단가를 취득가로 사용합니다. 거래소 원장에 기록된 FIFO(선입선출) 방식이 기준이 될 수 있으니 거래 내역 전체를 보관하세요.",
+                desc: "같은 코인을 여러 번에 걸쳐 매수했다면 총평균법(전체 취득금액 합계 ÷ 전체 취득수량 합계)으로 취득가를 계산합니다. FIFO(선입선출법) 방식은 법령상 사용 불가이므로, 거래 내역 전체를 보관해 총평균 취득가를 정확히 산출하세요.",
               },
             ].map((item) => (
               <div key={item.num} className="flex gap-4">
