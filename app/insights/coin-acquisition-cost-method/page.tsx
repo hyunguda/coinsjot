@@ -3,15 +3,15 @@ import Link from "next/link";
 import { formatDate } from "@/lib/insights";
 
 export const metadata: Metadata = {
-  title: "코인 취득가액 계산법: 이동평균법이란? | 코인 인사이트",
+  title: "코인 취득가액 계산법: 총평균법이란? | 코인 인사이트",
   description:
-    "같은 코인을 여러 번 나눠 샀다면 취득가액을 어떻게 계산할까요? 한국 세법이 정한 이동평균법의 계산 방식과 실제 사례를 정리했습니다.",
+    "같은 코인을 여러 번 나눠 샀다면 취득가액을 어떻게 계산할까요? 소득세법 시행령이 정한 총평균법의 계산 방식과 실제 사례를 정리했습니다.",
   keywords:
-    "코인 취득가액 계산, 이동평균법, 가상자산 취득가액, 코인 세금 계산, 비트코인 취득원가",
+    "코인 취득가액 계산, 총평균법, 가상자산 취득가액, 코인 세금 계산, 비트코인 취득원가",
   openGraph: {
-    title: "코인 취득가액 계산법: 이동평균법이란?",
+    title: "코인 취득가액 계산법: 총평균법이란?",
     description:
-      "같은 코인을 여러 번 나눠 샀다면 취득가액을 어떻게 계산할까요? 한국 세법이 정한 이동평균법의 계산 방식과 실제 사례를 정리했습니다.",
+      "같은 코인을 여러 번 나눠 샀다면 취득가액을 어떻게 계산할까요? 소득세법 시행령이 정한 총평균법의 계산 방식과 실제 사례를 정리했습니다.",
     type: "article",
   },
   alternates: {
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 const ARTICLE = {
-  title: "코인 취득가액 계산법: 이동평균법이란?",
+  title: "코인 취득가액 계산법: 총평균법이란?",
   date: "2026-09-15",
   category: "세금",
 };
@@ -50,7 +50,7 @@ export default function ArticleCoinAcquisitionCostMethod() {
         </h1>
         <p className="text-gray-500 text-lg leading-relaxed">
           같은 코인을 여러 번 나눠 샀다면 취득가액을 어떻게 계산할까요?
-          한국 세법이 정한 이동평균법의 계산 방식과 실제 사례를 정리했습니다.
+          소득세법 시행령이 정한 총평균법의 계산 방식과 실제 사례를 정리했습니다.
         </p>
       </header>
 
@@ -60,7 +60,7 @@ export default function ArticleCoinAcquisitionCostMethod() {
         <section>
           <h2 className="text-2xl font-bold mb-4">취득가액이 왜 중요한가?</h2>
           <p className="leading-relaxed mb-4">
-            가상자산 양도소득세는 <strong>양도차익 = 매도금액 − 취득가액</strong> 을 기준으로 계산합니다.
+            가상자산 양도소득세는 <strong>양도차익 = 매도금액 − 취득가액</strong>을 기준으로 계산합니다.
             취득가액이 높을수록 양도차익이 줄어들고, 세금도 줄어듭니다.
           </p>
           <p className="leading-relaxed">
@@ -70,18 +70,23 @@ export default function ArticleCoinAcquisitionCostMethod() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold mb-4">한국 세법의 기준: 이동평균법</h2>
+          <h2 className="text-2xl font-bold mb-4">한국 세법의 기준: 총평균법</h2>
           <p className="leading-relaxed mb-4">
-            소득세법 시행령에 따르면 가상자산의 취득가액은 <strong>이동평균법(총평균법이 아닌 이동평균법)</strong>으로
-            계산합니다. 이동평균법이란 코인을 새로 살 때마다 보유 수량과 총 취득금액을 다시 계산해
-            평균 단가를 갱신하는 방식입니다.
+            소득세법 시행령 제159조의5에 따르면 가상자산의 취득가액은 <strong>총평균법</strong>으로
+            계산합니다. 총평균법이란 해당 가상자산을 취득하는 데 든 총금액을 취득한 총수량으로 나눠
+            1단위당 평균 취득가를 산출하는 방식입니다.
           </p>
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-5">
-            <p className="font-semibold text-blue-900 mb-2">이동평균 단가 공식</p>
+            <p className="font-semibold text-blue-900 mb-2">총평균 단가 공식</p>
             <p className="font-mono text-sm text-blue-800">
-              이동평균 단가 = (기존 보유금액 + 신규 매수금액) ÷ (기존 수량 + 신규 수량)
+              총평균 단가 = 전체 취득에 든 금액의 합계 ÷ 전체 취득 수량의 합계
             </p>
           </div>
+          <p className="leading-relaxed mt-4 text-gray-600 text-sm">
+            매수할 때마다 단가를 갱신하는 이동평균법과 달리, 총평균법은 지금까지 매수한 전체 금액과
+            전체 수량을 기준으로 단 하나의 평균 단가를 계산합니다. 양도 시점에 보유 중인 수량에
+            대한 누적 평균 단가가 취득가액이 됩니다.
+          </p>
         </section>
 
         <section>
@@ -98,7 +103,7 @@ export default function ArticleCoinAcquisitionCostMethod() {
                   <th className="text-left px-4 py-3 font-semibold text-gray-600 border-b border-gray-200">구분</th>
                   <th className="text-right px-4 py-3 font-semibold text-gray-600 border-b border-gray-200">수량 (BTC)</th>
                   <th className="text-right px-4 py-3 font-semibold text-gray-600 border-b border-gray-200">단가</th>
-                  <th className="text-right px-4 py-3 font-semibold text-gray-600 border-b border-gray-200">이동평균 단가</th>
+                  <th className="text-right px-4 py-3 font-semibold text-gray-600 border-b border-gray-200">누적 총평균 단가</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
@@ -135,8 +140,9 @@ export default function ArticleCoinAcquisitionCostMethod() {
           </div>
 
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 space-y-2 text-sm">
-            <p><strong>3월 매수 후 이동평균</strong>: (5,000만 + 7,000만) ÷ 2 = <strong>6,000만원</strong></p>
-            <p><strong>6월 매수 후 이동평균</strong>: (6,000만×2 + 9,000만) ÷ 3 = <strong>7,000만원</strong></p>
+            <p><strong>총 취득금액</strong>: 5,000만 + 7,000만 + 9,000만 = <strong>2억 1,000만원</strong></p>
+            <p><strong>총 취득수량</strong>: 3 BTC</p>
+            <p><strong>총평균 단가</strong>: 2억 1,000만원 ÷ 3 = <strong>7,000만원/BTC</strong></p>
             <p className="pt-1 border-t border-gray-200"><strong>9월 매도 시 양도차익</strong>: 1억 − 7,000만 = <strong>3,000만원</strong></p>
             <p><strong>기본공제(250만원) 후 과세표준</strong>: 2,750만원</p>
             <p><strong>예상 세액(22%)</strong>: 약 605만원</p>
@@ -144,10 +150,10 @@ export default function ArticleCoinAcquisitionCostMethod() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold mb-4">이동평균법 vs 선입선출법(FIFO), 차이는?</h2>
+          <h2 className="text-2xl font-bold mb-4">총평균법 vs 선입선출법(FIFO), 차이는?</h2>
           <p className="leading-relaxed mb-4">
-            주식에서는 투자자가 선입선출법(FIFO)이나 이동평균법 중 선택할 수 있지만,
-            <strong> 가상자산은 이동평균법만 허용됩니다.</strong>
+            주식에서는 투자자가 선입선출법(FIFO)이나 총평균법 중 선택할 수 있지만,
+            <strong> 가상자산은 총평균법만 허용됩니다.</strong>
             선입선출법과의 차이를 위 사례로 비교하면 다음과 같습니다.
           </p>
           <div className="overflow-x-auto rounded-xl border border-gray-200 mb-4">
@@ -155,7 +161,7 @@ export default function ArticleCoinAcquisitionCostMethod() {
               <thead>
                 <tr className="bg-gray-50">
                   <th className="text-left px-4 py-3 font-semibold text-gray-600 border-b border-gray-200">구분</th>
-                  <th className="text-right px-4 py-3 font-semibold text-gray-600 border-b border-gray-200">이동평균법 (법정)</th>
+                  <th className="text-right px-4 py-3 font-semibold text-gray-600 border-b border-gray-200">총평균법 (법정)</th>
                   <th className="text-right px-4 py-3 font-semibold text-gray-600 border-b border-gray-200">선입선출법 (참고)</th>
                 </tr>
               </thead>
@@ -180,20 +186,20 @@ export default function ArticleCoinAcquisitionCostMethod() {
           </div>
           <p className="text-sm text-gray-500 leading-relaxed">
             선입선출법은 가장 저렴하게 산 코인이 먼저 팔리는 것으로 간주하기 때문에 양도차익이 더 크게 나옵니다.
-            이동평균법이 세금 측면에서 유리한 경우가 많습니다.
+            총평균법이 세금 측면에서 유리한 경우가 많습니다.
           </p>
         </section>
 
         <section>
           <h2 className="text-2xl font-bold mb-4">여러 거래소에 걸쳐 산 경우</h2>
           <p className="leading-relaxed mb-4">
-            업비트와 빗썸에서 동일한 코인을 각각 매수한 경우, 이동평균 계산은
+            업비트와 빗썸에서 동일한 코인을 각각 매수한 경우, 총평균 계산은
             <strong> 거래소별로 별도로 관리하는 것이 아니라, 같은 종목이면 합산해서 계산</strong>해야 합니다.
           </p>
           <p className="leading-relaxed">
             예를 들어 업비트에서 1 BTC를 5,000만원에, 빗썸에서 1 BTC를 7,000만원에 샀다면
-            이동평균 단가는 6,000만원이 됩니다. 어느 거래소에서 팔든 동일한 취득가를 적용합니다.
-            거래 내역을 거래소 구분 없이 종목별로 통합 관리해야 하는 이유입니다.
+            총평균 단가는 (5,000만 + 7,000만) ÷ 2 = 6,000만원이 됩니다. 어느 거래소에서 팔든
+            동일한 취득가를 적용합니다. 거래 내역을 거래소 구분 없이 종목별로 통합 관리해야 하는 이유입니다.
           </p>
         </section>
 
@@ -201,11 +207,11 @@ export default function ArticleCoinAcquisitionCostMethod() {
           <h2 className="text-2xl font-bold mb-4">정리: 핵심 체크리스트</h2>
           <div className="space-y-2">
             {[
-              "코인 취득가액은 이동평균법만 사용 — 선입선출법 불가",
-              "새로 살 때마다 이동평균 단가를 다시 계산",
+              "코인 취득가액은 총평균법만 사용 — 선입선출법·이동평균법 불가",
+              "총평균 단가 = 전체 취득금액 합계 ÷ 전체 취득수량 합계",
               "여러 거래소에서 산 같은 종목은 합산해서 평균 계산",
               "거래 내역(매수 일자·수량·금액)을 모두 보관해야 평균 계산 가능",
-              "수수료는 취득가액에 포함 가능 → 평균 단가에 반영하면 세금 줄어듦",
+              "수수료는 취득가액에 포함 가능 → 총평균 단가에 반영하면 세금 줄어듦",
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3 py-2 border-b border-gray-100 last:border-0">
                 <span className="text-blue-500 mt-0.5 flex-shrink-0">✓</span>
