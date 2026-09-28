@@ -116,7 +116,7 @@ export const insights: InsightArticle[] = [
     title: "코인 취득가액 계산법: 총평균법이란?",
     description:
       "같은 코인을 여러 번 나눠 샀다면 취득가액을 어떻게 계산할까요? 소득세법 시행령이 정한 총평균법의 계산 방식과 실제 사례를 정리했습니다.",
-    date: "2026-09-28",
+    date: "2026-09-15",
     category: "세금",
   },
   {
