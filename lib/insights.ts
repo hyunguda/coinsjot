@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-long-term-holding-tax",
+    title: "코인은 오래 들고 있어도 세금 혜택 없다 — 장기보유와 세금의 관계",
+    description:
+      "부동산은 장기보유특별공제, 해외주식은 이월공제가 있지만 코인은 보유 기간이 아무리 길어도 세금 혜택이 없습니다. 소득세법 기준으로 명확히 정리했습니다.",
+    date: "2026-09-28",
+    category: "세금",
+  },
+  {
     slug: "crypto-wallet-transfer-tax",
     title: "내 지갑 간 코인 이전, 세금이 발생할까?",
     description:
