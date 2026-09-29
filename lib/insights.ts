@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-inheritance-tax",
+    title: "코인도 상속세 낸다 — 상속받은 코인, 세금 처리 방법 완벽 정리",
+    description:
+      "가상자산도 상속 재산에 포함되어 상속세 신고 대상입니다. 상속 후 매도 시 양도소득세도 발생하지만 이중과세는 아닙니다. 취득가액 처리, 신고 기한, 증여와의 차이를 정리했습니다.",
+    date: "2026-09-29",
+    category: "세금",
+  },
+  {
     slug: "crypto-long-term-holding-tax",
     title: "코인은 오래 들고 있어도 세금 혜택 없다 — 장기보유와 세금의 관계",
     description:
