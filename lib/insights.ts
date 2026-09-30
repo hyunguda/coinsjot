@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-tax-glossary",
+    title: "코인 세금 용어 총정리 — 양도가액·취득가액·필요경비·과세표준 한 번에 이해하기",
+    description:
+      "코인 세금 계산에 나오는 용어를 계산 순서대로 정리했습니다. 양도가액, 취득가액, 필요경비, 소득금액, 기본공제, 과세표준, 세율까지 예시 계산과 함께 한 번에 이해할 수 있습니다.",
+    date: "2026-09-30",
+    category: "세금",
+  },
+  {
     slug: "crypto-inheritance-tax",
     title: "코인도 상속세 낸다 — 상속받은 코인, 세금 처리 방법 완벽 정리",
     description:
