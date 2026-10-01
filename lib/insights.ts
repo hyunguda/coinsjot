@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-tax-calculation-examples",
+    title: "코인 세금 계산 예시 5가지 — 소액 수익부터 손익통산·의제취득가액까지 상황별 정리",
+    description:
+      "코인 세금이 실제로 얼마나 나오는지 상황별 예시 5가지로 계산했습니다. 기본공제 이하 소액 수익, 수수료 반영, 여러 코인 손익통산, 의제취득가액 특례, 분할 매수 총평균법까지 단계별로 따라가 보세요.",
+    date: "2026-10-01",
+    category: "세금",
+  },
+  {
     slug: "crypto-tax-glossary",
     title: "코인 세금 용어 총정리 — 양도가액·취득가액·필요경비·과세표준 한 번에 이해하기",
     description:
