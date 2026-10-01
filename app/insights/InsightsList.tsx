@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
 import { InsightArticle, formatDate } from "@/lib/insights";
 
@@ -11,13 +8,9 @@ const CATEGORY_COLORS: Record<string, string> = {
   이슈: "bg-orange-100 text-orange-700",
 };
 
-const PAGE_SIZE = 20;
-
+// 검색엔진이 모든 글 링크를 HTML에서 바로 발견할 수 있도록 전체 목록을 서버에서 렌더링합니다.
+// (기존 클라이언트 페이지네이션은 버튼 방식이라 1페이지 이후 글 링크가 크롤러에 노출되지 않았음)
 export default function InsightsList({ articles }: { articles: InsightArticle[] }) {
-  const [page, setPage] = useState(1);
-  const totalPages = Math.ceil(articles.length / PAGE_SIZE);
-  const paginated = articles.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
-
   if (articles.length === 0) {
     return (
       <p className="text-center text-gray-400 py-20">곧 첫 글이 올라옵니다.</p>
@@ -35,7 +28,7 @@ export default function InsightsList({ articles }: { articles: InsightArticle[] 
 
       {/* 글 목록 */}
       <div className="divide-y divide-gray-100">
-        {paginated.map((article) => (
+        {articles.map((article) => (
           <Link
             key={article.slug}
             href={`/insights/${article.slug}`}
@@ -58,42 +51,9 @@ export default function InsightsList({ articles }: { articles: InsightArticle[] 
         ))}
       </div>
 
-      {/* 페이지네이션 */}
-      {totalPages > 1 && (
-        <div className="flex justify-center items-center gap-2 mt-10">
-          <button
-            onClick={() => { setPage((p) => Math.max(1, p - 1)); window.scrollTo(0, 0); }}
-            disabled={page === 1}
-            className="px-3 py-1.5 text-sm rounded-lg border border-gray-200 disabled:opacity-30 hover:border-blue-400 transition"
-          >
-            이전
-          </button>
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-            <button
-              key={p}
-              onClick={() => { setPage(p); window.scrollTo(0, 0); }}
-              className={`w-8 h-8 text-sm rounded-lg transition ${
-                p === page
-                  ? "bg-blue-600 text-white"
-                  : "border border-gray-200 hover:border-blue-400"
-              }`}
-            >
-              {p}
-            </button>
-          ))}
-          <button
-            onClick={() => { setPage((p) => Math.min(totalPages, p + 1)); window.scrollTo(0, 0); }}
-            disabled={page === totalPages}
-            className="px-3 py-1.5 text-sm rounded-lg border border-gray-200 disabled:opacity-30 hover:border-blue-400 transition"
-          >
-            다음
-          </button>
-        </div>
-      )}
-
       {/* 총 글 수 */}
       <p className="text-center text-xs text-gray-400 mt-4">
-        총 {articles.length}개 · {page}/{totalPages || 1} 페이지
+        총 {articles.length}개
       </p>
     </>
   );

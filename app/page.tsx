@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { insights, formatDate } from "@/lib/insights";
 
 export const metadata: Metadata = {
   title: "coinsjot | 가상자산 세금·손익 계산기",
@@ -194,6 +195,30 @@ export default function Home() {
           >
             계산기 이용하기 →
           </Link>
+        </div>
+      </section>
+
+      {/* Latest Insights Section */}
+      <section className="mb-16">
+        <div className="flex items-end justify-between mb-6">
+          <h2 className="text-3xl font-bold text-gray-900">최신 코인 인사이트</h2>
+          <Link href="/insights" className="text-sm font-medium text-blue-600 hover:text-blue-800 transition">
+            전체 글 보기 →
+          </Link>
+        </div>
+        <div className="divide-y divide-gray-100 border border-gray-200 rounded-lg">
+          {insights.slice(0, 8).map((article) => (
+            <Link
+              key={article.slug}
+              href={`/insights/${article.slug}`}
+              className="group flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 px-5 py-4 hover:bg-gray-50 transition-colors"
+            >
+              <span className="text-sm text-gray-400 sm:w-28 flex-shrink-0">{formatDate(article.date)}</span>
+              <span className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                {article.title}
+              </span>
+            </Link>
+          ))}
         </div>
       </section>
 
