@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "소개 | coinsjot",
-  description: "coinsjot 프로젝트 소개 및 비전",
+  description: "coinsjot 소개, 콘텐츠 작성 원칙, 참고 자료와 오류 수정 방침을 안내합니다.",
   alternates: {
     canonical: "https://coinsjot.com/about",
   },
@@ -26,6 +26,43 @@ export default function AboutPage() {
             있도록 도구를 모아둔 사이트입니다. 세금 계산부터 선물 청산가, 손익 정산까지 실제 투자에
             필요한 계산기를 순차적으로 제공합니다.
           </p>
+        </section>
+
+        <section>
+          <h2 className="text-3xl font-bold mb-4">운영 및 콘텐츠 작성 원칙</h2>
+          <p className="leading-relaxed">
+            coinsjot은 가상자산 세금 계산 도구와 관련 해설 글(코인 인사이트)을 함께 제공하는 개인 운영
+            사이트입니다. 특정 거래소나 세무 서비스와 제휴하지 않으며, 매수·매도를 권유하는 콘텐츠는
+            다루지 않습니다.
+          </p>
+          <div className="mt-6 space-y-4">
+            <div>
+              <h3 className="font-bold text-lg mb-2">참고하는 자료</h3>
+              <ul className="list-disc pl-6 space-y-1">
+                <li>법령 원문: 소득세법·같은 법 시행령(가상자산소득), 상속세 및 증여세법·같은 법 시행령</li>
+                <li>국세청 고시·보도자료·안내 자료, 홈택스 공개 정보</li>
+                <li>기획재정부 세법개정안 및 시행 일정 발표 자료</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-bold text-lg mb-2">작성 방식</h3>
+              <ul className="list-disc pl-6 space-y-1">
+                <li>세율·공제·계산 방법 등 수치는 법령 원문과 공식 자료로 확인한 뒤 작성합니다.</li>
+                <li>계산 예시는 직접 계산해 검증하고, 단순화한 가정은 본문에 명시합니다.</li>
+                <li>글마다 근거 조문과 면책 고지를 함께 표시합니다.</li>
+                <li>현재 콘텐츠는 2027년 1월 1일 시행 예정인 가상자산 과세 기준으로 작성되어 있으며,
+                  세법이 개정되면 관련 글과 계산기를 갱신합니다.</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-bold text-lg mb-2">오류 수정 방침</h3>
+              <p className="leading-relaxed">
+                내용상 오류를 발견하거나 제보받으면 근거를 확인한 뒤 수정하고, 의미가 달라지는 수정은
+                해당 글 하단에 수정 일자와 내용을 함께 남깁니다. 오류 제보는{" "}
+                <a href="/contact" className="text-blue-600 hover:underline">문의하기</a>로 보내주세요.
+              </p>
+            </div>
+          </div>
         </section>
 
         <section>
@@ -62,7 +99,7 @@ export default function AboutPage() {
         </section>
 
         <section>
-          <h2 className="text-3xl font-bold mb-4">계산기 로드맵</h2>
+          <h2 className="text-3xl font-bold mb-4">제공 중인 계산기</h2>
           <div className="space-y-4">
             <div className="border-l-4 border-blue-500 bg-blue-50 p-4 rounded">
               <h3 className="font-bold text-blue-900 mb-2">✓ 가상화폐 세금 계산기</h3>
@@ -150,8 +187,9 @@ export default function AboutPage() {
             <div>
               <h3 className="font-bold text-lg mb-2">Q. 입력한 데이터가 저장되나요?</h3>
               <p className="text-gray-700">
-                아니요. 모든 계산은 브라우저에서만 수행되며, 서버에 저장되지 않습니다. 페이지를
-                새로고침하면 입력값은 자동으로 삭제됩니다.
+                아니요. 모든 계산은 브라우저에서만 수행되며, 서버로 전송·저장되지 않습니다. 대부분의
+                계산기는 페이지를 새로고침하면 입력값이 삭제되고, 기록형 도구(100회 거래 챌린지 등)는
+                이용자 본인의 브라우저에만 저장됩니다.
               </p>
             </div>
 

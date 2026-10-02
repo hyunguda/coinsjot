@@ -136,13 +136,27 @@ export default function ArticleCryptoInheritanceTax() {
         <section>
           <h2 className="text-2xl font-bold mb-4">코인 평가액은 어떻게 정할까</h2>
           <p className="leading-relaxed mb-4">
-            상속 재산 중 가상자산의 가액은 <strong>상속 개시일(사망일) 당시 시가</strong>로
-            평가합니다. 국내 가상자산 거래소에서 거래되는 코인은 거래소 기준 시가를 사용하며,
-            구체적인 평가 방법은 국세청 평가 지침과 세무사 상담을 통해 확인하는 것이 안전합니다.
+            가상자산은 가격 변동이 크기 때문에 사망일 하루의 시세로 평가하지 않습니다.
+            상속세 및 증여세법 제65조 제2항과 같은 법 시행령 제60조 제2항에 따라
+            <strong>상속 개시일(사망일) 전·이후 각 1개월, 총 2개월 동안의 일평균가액 평균</strong>으로 평가합니다.
+          </p>
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 space-y-3 text-sm mb-4">
+            <div>
+              <p className="font-semibold text-gray-700 mb-1">국세청장이 고시한 거래소(업비트·빗썸·코빗·코인원)에서 거래되는 코인</p>
+              <p className="text-gray-600">평가기준일 전·이후 각 1개월 동안 해당 거래소가 공시한 일평균가액의 평균액</p>
+            </div>
+            <div className="border-t border-gray-200 pt-3">
+              <p className="font-semibold text-gray-700 mb-1">그 밖의 거래소에서만 거래되는 코인</p>
+              <p className="text-gray-600">해당 거래소가 공시하는 일평균가액 또는 종료시각 시세 등 합리적으로 인정되는 가액</p>
+            </div>
+          </div>
+          <p className="leading-relaxed mb-4">
+            코인별 평가액은 홈택스의 <strong>가상자산 일평균가격 조회</strong> 메뉴에서 코인 종류와
+            평가기준일을 입력해 확인할 수 있습니다.
           </p>
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 text-sm text-amber-800 leading-relaxed">
-            <strong>주의:</strong> 코인 가격은 변동성이 크기 때문에 상속 개시일 시점의 가격 기록을
-            반드시 보관해두세요. 거래소 앱에서 해당 날짜의 종가를 캡처해두는 것이 좋습니다.
+            <strong>주의:</strong> 개인 지갑(하드웨어 지갑 등)에 보관된 코인도 상속 재산에 포함됩니다.
+            지갑 주소와 보유 수량 기록을 함께 보관해 두세요.
           </div>
         </section>
 
@@ -155,7 +169,7 @@ export default function ArticleCryptoInheritanceTax() {
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 space-y-3 text-sm mb-4">
             <div>
               <p className="font-semibold text-gray-700 mb-1">상속받은 코인의 취득가액</p>
-              <p className="text-gray-600">= 상속세 신고 시 평가액 (상속 개시일 시가)</p>
+              <p className="text-gray-600">= 상속세 신고 시 평가액 (상속 개시일 전·이후 각 1개월 일평균가액의 평균)</p>
             </div>
             <div className="border-t border-gray-200 pt-3">
               <p className="font-semibold text-gray-700 mb-1">양도소득세 계산</p>
@@ -165,7 +179,7 @@ export default function ArticleCryptoInheritanceTax() {
             </div>
           </div>
           <p className="leading-relaxed">
-            예를 들어 상속 당시 1비트코인의 시가가 1억원이었고, 이후 1억 5,000만원에 매도했다면
+            예를 들어 상속세 신고 시 1비트코인의 평가액이 1억원이었고, 이후 1억 5,000만원에 매도했다면
             양도차익은 5,000만원(= 1억 5,000만원 − 1억원)에서 기본공제 250만원을 뺀
             4,750만원이 과세표준이 됩니다. 원래 피상속인의 취득가액부터 계산하는 것이 아닙니다.
           </p>
@@ -200,12 +214,12 @@ export default function ArticleCryptoInheritanceTax() {
                 <tr>
                   <td className="px-4 py-3 font-medium">신고 기한</td>
                   <td className="px-4 py-3">증여일이 속한 달의 말일 + 3개월</td>
-                  <td className="px-4 py-3">상속 개시일의 말일 + 6개월</td>
+                  <td className="px-4 py-3">상속 개시일이 속한 달의 말일 + 6개월</td>
                 </tr>
                 <tr className="bg-gray-50">
                   <td className="px-4 py-3 font-medium">이후 양도세 취득가액</td>
-                  <td className="px-4 py-3">증여 당시 시가</td>
-                  <td className="px-4 py-3">상속 당시 시가</td>
+                  <td className="px-4 py-3">증여 당시 평가액</td>
+                  <td className="px-4 py-3">상속 당시 평가액</td>
                 </tr>
               </tbody>
             </table>
@@ -232,8 +246,8 @@ export default function ArticleCryptoInheritanceTax() {
               },
               {
                 step: "3",
-                title: "시가 평가 및 신고",
-                desc: "각 코인의 상속 개시일 당시 시가를 산정하고 세무사를 통해 상속세를 신고·납부합니다.",
+                title: "평가액 산정 및 신고",
+                desc: "홈택스 가상자산 일평균가격 조회로 코인별 평가액(상속 개시일 전·이후 각 1개월 평균)을 확인하고, 다른 상속 재산과 합산해 신고·납부합니다.",
               },
               {
                 step: "4",
@@ -259,6 +273,7 @@ export default function ArticleCryptoInheritanceTax() {
           <div className="space-y-2">
             {[
               "코인은 상속 재산에 포함 — 부동산·금융 자산과 합산해 신고",
+              "코인 평가액 = 상속 개시일 전·이후 각 1개월(총 2개월) 일평균가액의 평균",
               "상속세 신고 기한: 상속 개시일이 속한 달 말일 + 6개월",
               "일괄공제 5억원 적용 → 상속 재산이 5억원 이하면 상속세 없는 경우 많음",
               "상속 후 코인 매도 시 양도소득세 별도 발생 — 이중과세 아님",
@@ -272,6 +287,12 @@ export default function ArticleCryptoInheritanceTax() {
             ))}
           </div>
         </section>
+
+        {/* 수정 이력 */}
+        <p className="text-xs text-gray-400">
+          수정 이력: 2026년 10월 1일 가상자산 평가 방법을 &lsquo;상속 개시일 당시 시가&rsquo;에서
+          &lsquo;상속 개시일 전·이후 각 1개월 일평균가액의 평균&rsquo;(상속세 및 증여세법 시행령 제60조)으로 정정했습니다.
+        </p>
 
         {/* 면책 고지 */}
         <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-sm text-gray-500 leading-relaxed">
