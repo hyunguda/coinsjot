@@ -137,7 +137,7 @@ export default function ArticleCryptoInheritanceTax() {
           <h2 className="text-2xl font-bold mb-4">코인 평가액은 어떻게 정할까</h2>
           <p className="leading-relaxed mb-4">
             가상자산은 가격 변동이 크기 때문에 사망일 하루의 시세로 평가하지 않습니다.
-            상속세 및 증여세법 제65조 제2항과 같은 법 시행령 제60조 제2항에 따라
+            상속세 및 증여세법 제65조 제2항과 같은 법 시행령 제60조 제2항에 따라{" "}
             <strong>상속 개시일(사망일) 전·이후 각 1개월, 총 2개월 동안의 일평균가액 평균</strong>으로 평가합니다.
           </p>
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 space-y-3 text-sm mb-4">
