@@ -3,6 +3,8 @@ export type InsightArticle = {
   title: string;
   description: string;
   date: string;
+  /** 내용을 수정한 날짜(YYYY-MM-DD). 사이트맵 lastmod에 사용합니다. */
+  updated?: string;
   category: string;
 };
 
@@ -37,6 +39,7 @@ export const insights: InsightArticle[] = [
     description:
       "가상자산도 상속 재산에 포함되어 상속세 신고 대상입니다. 상속 후 매도 시 양도소득세도 발생하지만 이중과세는 아닙니다. 취득가액 처리, 신고 기한, 증여와의 차이를 정리했습니다.",
     date: "2026-09-29",
+    updated: "2026-10-01",
     category: "세금",
   },
   {
@@ -77,6 +80,7 @@ export const insights: InsightArticle[] = [
     description:
       "기본공제 250만원은 '1인당' 적용됩니다. 배우자와 코인을 나눠 보유하면 공제를 500만원까지 활용할 수 있습니다. 계산 사례, 증여세 주의사항, 실행 조건을 정리했습니다.",
     date: "2026-09-24",
+    updated: "2026-10-07",
     category: "세금",
   },
   {
@@ -213,6 +217,7 @@ export const insights: InsightArticle[] = [
     description:
       "2026년 12월 31일 시가를 취득가로 인정받는 의제취득가액 특례. 누가 혜택을 받고, 어떻게 계산하며, 어떤 증빙이 필요한지 사례 중심으로 정리했습니다.",
     date: "2026-09-07",
+    updated: "2026-10-07",
     category: "세금",
   },
   {
