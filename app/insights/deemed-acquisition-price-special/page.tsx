@@ -193,15 +193,15 @@ export default function ArticleDeemedAcquisitionPriceSpecial() {
             {[
               {
                 title: "국내 거래소 공시 기준가",
-                desc: "업비트·빗썸·코인원 등 국내 거래소에서 12월 31일 24시(자정) 기준 마지막 체결가 또는 일별 종가를 기준으로 합니다. 거래소별 기준가 고시를 확인하세요.",
+                desc: "국세청이 고시하는 거래소(시가고시 가상자산사업자)에서 거래되는 코인은 각 거래소가 2027년 1월 1일 0시 현재 공시한 가격의 평균이 시가입니다(소득세법 시행령 제88조 제2항). 12월 31일 종가가 아니며, 가장 높은 거래소 가격을 골라 쓸 수 없습니다.",
               },
               {
                 title: "해외 거래소 이용자",
-                desc: "해외 거래소를 이용했거나 거래소 내 거래가 없는 경우, 코인마켓캡·코인게코 등 공신력 있는 데이터 집계 사이트의 당일 종가를 활용할 수 있습니다. 스크린샷과 URL을 함께 보관하세요.",
+                desc: "국내 시가고시 거래소에서 거래되지 않는 코인은 해당 코인을 취급하는 거래소가 2027년 1월 1일 0시에 공시한 가격을 씁니다. 원화 환산 등 세부 기준은 국세청 안내를 확인하고, 그 시점의 시세 화면을 보관하세요.",
               },
               {
                 title: "코인마켓캡 과거 데이터 활용",
-                desc: "날짜가 지난 후에도 코인마켓캡의 Historical Data 탭에서 특정 날짜의 시가·종가·고가·저가를 확인할 수 있습니다.",
+                desc: "코인마켓캡 등의 과거 시세 데이터는 참고 자료로 보관할 수 있지만, 법령상 시가 기준은 위 거래소 공시가격입니다.",
               },
             ].map((item, i) => (
               <div key={i} className="flex gap-4 p-4 border border-gray-200 rounded-xl">
@@ -289,6 +289,12 @@ export default function ArticleDeemedAcquisitionPriceSpecial() {
             </table>
           </div>
         </section>
+
+        {/* 수정 이력 */}
+        <p className="text-xs text-gray-400">
+          수정 이력: 2026년 10월 7일 2026년 12월 31일 시가 산정 기준을 &lsquo;12월 31일 종가&rsquo;에서
+          &lsquo;2027년 1월 1일 0시 현재 거래소 공시가격(시가고시 사업자는 평균)&rsquo;(소득세법 시행령 제88조 제2항)으로 정정했습니다.
+        </p>
 
         {/* 면책 고지 */}
         <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-sm text-gray-500 leading-relaxed">

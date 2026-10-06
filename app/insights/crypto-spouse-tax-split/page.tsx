@@ -184,7 +184,7 @@ export default function ArticleCryptoSpouseTaxSplit() {
               <span className="text-blue-500 font-bold mt-0.5 shrink-0">②</span>
               <span>
                 <strong>실제 거래 내역 보관:</strong> 증여 사실과 매도 내역이 각각 분리돼야 합니다.
-                거래소 거래 내역 CSV를 보관하고, 증여 시 시가 자료(거래소 종가)를 기록해두세요.
+                거래소 거래 내역 CSV를 보관하고, 증여 재산 평가액 자료(증여일 전·이후 각 1개월 일평균가액의 평균, 홈택스 가상자산 일평균가격 조회)를 보관해두세요.
               </span>
             </li>
             <li className="flex gap-3">

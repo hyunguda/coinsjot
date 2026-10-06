@@ -145,9 +145,10 @@ export default function DeemedAcquisitionPage() {
               <div className="border-l-4 border-yellow-500 bg-yellow-50 p-4">
                 <p className="font-semibold text-yellow-900 mb-2">Q. 2026년 12월 31일 시가는 어떻게 확인하나요?</p>
                 <p className="text-yellow-800">
-                  거래소(업비트, 빗썸 등)의 종가를 기준으로 합니다. 증명을 위해 거래소 스크린샷이나 공식 API
-                  데이터를 보관하는 것이 좋습니다. 여러 거래소의 가격이 다를 수 있으므로 가장 높은 가격을
-                  선택하는 것이 절세에 유리합니다.
+                  12월 31일 종가가 아니라 2027년 1월 1일 0시 현재 거래소가 공시한 가격입니다. 국세청이 고시하는
+                  거래소(시가고시 가상자산사업자)에서 거래되는 코인은 그 거래소들 가격의 평균을 쓰며, 가장 높은
+                  거래소 가격을 골라 쓸 수는 없습니다(소득세법 시행령 제88조 제2항). 보유 현황과 시세 화면을
+                  함께 기록해 두세요.
                 </p>
               </div>
 

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "보유 중인 가상자산의 날짜별 가격을 종목별로 기록하고 엑셀(CSV)로 내보냅니다. 스크린샷 첨부 기능으로 의제취득가액 특례 등 세금 신고에 필요한 증빙 자료를 한 번에 준비하세요.",
   keywords:
-    "코인 보유가격 기록, 가상자산 시가 기록, 2026년 12월 31일 시가, 의제취득가액 기준일, 코인 종가 기록, 가상자산 세금 자료",
+    "코인 보유가격 기록, 가상자산 시가 기록, 2026년 12월 31일 시가, 의제취득가액 기준일, 2027년 1월 1일 0시 시가, 가상자산 세금 자료",
   alternates: {
     canonical: "https://coinsjot.com/calculators/year-end-price",
   },
@@ -37,7 +37,7 @@ export default function YearEndPricePage() {
             더 높은 금액으로 산정됩니다. 즉, 시가가 더 높다면 세금을 크게 줄일 수 있습니다.
           </p>
           <p className="text-blue-800 text-sm font-semibold">
-            → 2026년 12월 31일 당일 각 거래소의 종가를 꼭 캡처하거나 기록해 두세요.
+            → 이 시가는 12월 31일 종가가 아니라 2027년 1월 1일 0시 현재 거래소 공시가격입니다. 그 시점 전후 시세 화면을 꼭 캡처하거나 기록해 두세요.
           </p>
         </div>
       </div>
@@ -71,18 +71,19 @@ export default function YearEndPricePage() {
             <h3 className="text-xl font-bold mb-4">어떤 가격을 기록해야 하나요?</h3>
             <div className="space-y-4">
               <div className="border-l-4 border-blue-500 bg-blue-50 p-4">
-                <p className="font-semibold text-blue-900 mb-2">거래소별 종가 기준</p>
+                <p className="font-semibold text-blue-900 mb-2">2027년 1월 1일 0시 공시가격 기준</p>
                 <p className="text-blue-800 text-sm">
-                  국내 거래소(업비트, 빗썸 등)는 2026년 12월 31일 오후 11시 59분 기준 또는
-                  당일 24시간 가중평균가를 사용합니다. 세무 신고 시 거래소에서 제공하는
-                  공식 시세 자료를 활용하세요.
+                  국세청이 고시하는 거래소(시가고시 가상자산사업자)에서 거래되는 코인은 각 거래소가
+                  2027년 1월 1일 0시 현재 공시한 가격의 평균이 시가입니다(소득세법 시행령 제88조 제2항).
+                  12월 31일 종가나 하루 평균가가 아니며, 가장 높은 거래소 가격을 골라 쓸 수도 없습니다.
                 </p>
               </div>
               <div className="border-l-4 border-gray-400 bg-gray-50 p-4">
                 <p className="font-semibold text-gray-800 mb-2">해외 거래소 보유 자산</p>
                 <p className="text-gray-700 text-sm">
-                  해외 거래소에 보유한 자산도 세금 신고 대상입니다. 해당 거래소의
-                  2026.12.31 종가(원화 환산)를 별도로 기록해 두세요.
+                  국내 시가고시 거래소에서 거래되지 않는 코인은 해당 코인을 취급하는 거래소가
+                  2027년 1월 1일 0시에 공시한 가격을 씁니다. 원화 환산 등 세부 기준은 국세청 안내를
+                  확인하고, 그 시점의 시세 화면을 별도로 기록해 두세요.
                 </p>
               </div>
             </div>
