@@ -8,6 +8,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-year-end-market-price",
+    title: "2026년 12월 31일 '시가'는 어떻게 정해질까 — 의제취득가액 기준가격 계산법 정리",
+    description:
+      "의제취득가액 특례에 쓰이는 '2026년 12월 31일 당시의 시가'는 12월 31일 종가가 아니라 2027년 1월 1일 0시에 거래소가 공시한 가격입니다. 소득세법 시행령 제88조 기준으로 계산 방법과 지금 준비할 기록을 정리했습니다.",
+    date: "2026-10-07",
+    category: "세금",
+  },
+  {
     slug: "crypto-tax-calculation-examples",
     title: "코인 세금 계산 예시 5가지 — 소액 수익부터 손익통산·의제취득가액까지 상황별 정리",
     description:

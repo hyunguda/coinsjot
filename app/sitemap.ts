@@ -4,7 +4,7 @@ import { insights } from "@/lib/insights";
 const BASE = "https://coinsjot.com";
 
 const CALCULATOR_DATES: Record<string, string> = {
-  "deemed-acquisition-price": "2026-08-24",
+  "deemed-acquisition-price": "2026-10-07",
   "profit-loss-simulator":    "2026-08-25",
   "compound-interest":        "2026-08-26",
   "leverage-pnl":             "2026-08-27",
@@ -12,7 +12,7 @@ const CALCULATOR_DATES: Record<string, string> = {
   "cross-liquidation":        "2026-08-29",
   "dca-average":              "2026-08-30",
   "gift-tax":                 "2026-08-31",
-  "year-end-price":           "2026-09-01",
+  "year-end-price":           "2026-10-07",
   "trade-challenge":          "2026-09-02",
 };
 
@@ -32,8 +32,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   return [
-    { url: BASE,               lastModified: new Date("2026-10-01"), changeFrequency: "weekly", priority: 1 },
-    { url: `${BASE}/insights`, lastModified: new Date("2026-10-01"), changeFrequency: "weekly", priority: 0.9 },
+    { url: BASE,               lastModified: new Date("2026-10-07"), changeFrequency: "weekly", priority: 1 },
+    { url: `${BASE}/insights`, lastModified: new Date("2026-10-07"), changeFrequency: "weekly", priority: 0.9 },
     ...calculators,
     ...insightPages,
     { url: `${BASE}/about`,   lastModified: new Date("2026-10-01"), changeFrequency: "yearly", priority: 0.5 },
