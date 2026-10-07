@@ -45,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...insightPages,
     { url: `${BASE}/about`,   lastModified: kst("2026-10-01"), changeFrequency: "yearly", priority: 0.5 },
     { url: `${BASE}/contact`, lastModified: kst("2026-08-24"), changeFrequency: "yearly", priority: 0.5 },
-    { url: `${BASE}/privacy`, lastModified: kst("2026-08-24"), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE}/privacy`, lastModified: kst("2026-10-07"), changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE}/terms`,   lastModified: kst("2026-08-24"), changeFrequency: "yearly", priority: 0.3 },
   ];
 }
