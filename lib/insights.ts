@@ -10,6 +10,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-exchange-tax-reporting",
+    title: "거래소는 국세청에 내 코인 거래를 어떻게 보고할까 — 거래명세서·거래집계표 제출 일정 정리",
+    description:
+      "2027년 1월 1일 거래분부터 국내 가상자산사업자는 거래명세서와 거래집계표를 국세청에 제출합니다. 누가, 무엇을, 언제 제출하는지와 투자자가 알아둘 점을 소득세법 제164조의4 기준으로 정리했습니다.",
+    date: "2026-10-10",
+    category: "세금",
+  },
+  {
     slug: "crypto-year-end-market-price",
     title: "2026년 12월 31일 '시가'는 어떻게 정해질까 — 의제취득가액 기준가격 계산법 정리",
     description:
