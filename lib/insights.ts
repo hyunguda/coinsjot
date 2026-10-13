@@ -10,6 +10,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-lending-income-tax",
+    title: "코인 빌려주고 받은 이자(렌딩)도 세금 낼까? — 가상자산 대여소득 과세 정리",
+    description:
+      "2027년부터 과세되는 가상자산소득에는 코인을 양도한 소득뿐 아니라 대여해서 받은 소득도 포함됩니다. 대여소득의 계산 방법, 양도소득과 합산되는 구조, 아직 기준이 정해지지 않은 부분을 정리했습니다.",
+    date: "2026-10-13",
+    category: "세금",
+  },
+  {
     slug: "crypto-exchange-tax-reporting",
     title: "거래소는 국세청에 내 코인 거래를 어떻게 보고할까 — 거래명세서·거래집계표 제출 일정 정리",
     description:
@@ -201,6 +209,7 @@ export const insights: InsightArticle[] = [
     description:
       "스테이킹 보상과 에어드롭으로 받은 코인도 2027년부터 세금 대상입니다. 과세 시점, 취득가액 계산법, 절세 포인트까지 정리했습니다.",
     date: "2026-09-10",
+    updated: "2026-10-13",
     category: "세금",
   },
   {
