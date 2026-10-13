@@ -64,17 +64,19 @@ export default function ArticleStakingAirdropTax() {
             일반 매도 차익과는 조금 다릅니다. 혼동하기 쉬운 부분이라 아래에서 각각 정리합니다.
           </p>
           <p className="leading-relaxed">
-            2027년부터 시행되는 가상자산 양도소득세는 &quot;매도 차익&quot;에만 적용됩니다. 하지만
-            스테이킹 보상이나 에어드롭은 받는 시점에 이미 소득이 발생한 것으로 봐서 별도 처리가
-            필요합니다.
+            2027년부터 과세되는 가상자산소득은 법상 가상자산을 &quot;양도하거나 대여함으로써&quot; 발생하는
+            소득입니다(소득세법 제21조 제1항 제27호). 스테이킹 보상이나 에어드롭이 이 중 어디에 해당하는지,
+            받는 시점에 과세하는지는 아직 국세청의 구체적인 기준이 나오지 않아, 아래 내용은 현재 논의되는
+            일반적인 해석을 정리한 것입니다.
           </p>
         </section>
 
         <section>
           <h2 className="text-2xl font-bold mb-4">스테이킹 보상의 세금 처리</h2>
           <p className="leading-relaxed mb-4">
-            스테이킹 보상은 <strong>받는 시점의 시장가격</strong>을 기준으로 소득이 발생한 것으로
-            봅니다. 이후 그 코인을 매도할 때는, 받을 당시의 시가가 취득가액이 됩니다.
+            일반적으로는 스테이킹 보상을 <strong>받는 시점의 시장가격</strong>을 기준으로 소득이 발생한 것으로
+            보고, 이후 그 코인을 매도할 때 받을 당시의 시가를 취득가액으로 보는 해석이 많습니다. 다만 법령상
+            명확한 규정은 아직 없습니다.
           </p>
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-sm space-y-2 mb-6">
             <p className="font-semibold text-gray-700 mb-3">예시: 스테이킹 보상 100개 수령</p>
@@ -172,6 +174,13 @@ export default function ArticleStakingAirdropTax() {
             ))}
           </div>
         </section>
+
+        {/* 수정 이력 */}
+        <p className="text-xs text-gray-400">
+          수정 이력: 2026년 10월 13일 과세 대상(양도·대여 소득) 설명을 정정하고, 스테이킹 보상의 과세 시점·취득가액이
+          아직 확정되지 않은 해석임을 명시했습니다. 관련 글:{" "}
+          <Link href="/insights/crypto-lending-income-tax" className="underline">코인 대여소득 과세 정리</Link>
+        </p>
 
         {/* 면책 고지 */}
         <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-sm text-gray-500 leading-relaxed">
