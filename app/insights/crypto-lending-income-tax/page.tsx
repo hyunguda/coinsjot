@@ -194,7 +194,7 @@ export default function ArticleCryptoLendingIncomeTax() {
             </table>
           </div>
           <p className="leading-relaxed">
-            국세청은 연내 과세 관련 고시를 준비하고 있다고 밝혔습니다. 고시나 후속 안내가 나오면 이 글도
+            국세청장은 2026년 10월 13일 국정감사에서 가상자산 과세 기준을 담은 고시를 11월쯤 발표할 수 있도록 준비하고 있다고 밝혔습니다. 고시나 후속 안내가 나오면 이 글도
             갱신하겠습니다. 그 전까지는 아래 기록을 남겨두는 것이 가장 안전합니다.
           </p>
         </section>
@@ -253,7 +253,7 @@ export default function ArticleCryptoLendingIncomeTax() {
               "대여소득의 필요경비는 대여를 위해 든 부대비용 (빌려준 코인의 취득가액은 빼지 않음)",
               "대여소득은 양도 손익과 합산해 연 250만원 기본공제를 한 번 적용",
               "세율 22%(지방소득세 포함), 다음 해 5월 신고·납부",
-              "대여 범위·스테이킹 구분·이자 코인 평가 기준은 아직 미비 → 국세청 고시 확인",
+              "대여 범위·스테이킹 구분·이자 코인 평가 기준은 아직 미비 → 11월 예정인 국세청 고시 확인",
               "이자 받은 날짜·수량·시세·비용·상품 정보를 기록",
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3 py-2 border-b border-gray-100 last:border-0">
