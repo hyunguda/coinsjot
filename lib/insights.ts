@@ -10,6 +10,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "unregistered-exchange-block-2026",
+    title: "쿠코인·MEXC 등 미신고 거래소 27곳 접속 차단 — 내 코인과 거래 기록은 어떻게 할까",
+    description:
+      "2026년 10월 13일 금융정보분석원은 미신고 가상자산사업자 웹사이트 27곳의 국내 접속 차단을 발표했습니다. 무엇이 바뀌었는지, 이용자가 지금 확인할 것과 2027년 세금 신고를 위해 챙겨둘 기록을 정리했습니다.",
+    date: "2026-10-14",
+    category: "이슈",
+  },
+  {
     slug: "crypto-lending-income-tax",
     title: "코인 빌려주고 받은 이자(렌딩)도 세금 낼까? — 가상자산 대여소득 과세 정리",
     description:
