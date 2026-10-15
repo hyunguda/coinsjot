@@ -10,6 +10,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "nts-crypto-tax-notice-november-2026",
+    title: "국세청 \"가상자산 과세 고시 11월 준비\" — 국정감사에서 나온 과세 기준 발언 정리",
+    description:
+      "2026년 10월 13일 국세청 국정감사에서 국세청장은 가상자산 과세 기준을 담은 고시를 11월쯤 발표할 수 있도록 준비 중이라고 밝혔습니다. 스테이킹·에어드롭에 대한 입장과 투자자가 확인할 일정을 정리했습니다.",
+    date: "2026-10-15",
+    category: "이슈",
+  },
+  {
     slug: "unregistered-exchange-block-2026",
     title: "쿠코인·MEXC 등 미신고 거래소 27곳 접속 차단 — 내 코인과 거래 기록은 어떻게 할까",
     description:
