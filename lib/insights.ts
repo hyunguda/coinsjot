@@ -10,6 +10,14 @@ export type InsightArticle = {
 
 export const insights: InsightArticle[] = [
   {
+    slug: "crypto-tax-scope-virtual-asset",
+    title: "과세 대상 가상자산은 어디까지? — NFT·게임 아이템·스테이블코인·포인트 구분 정리",
+    description:
+      "2027년 과세 대상은 가상자산이용자보호법 제2조 제1호의 가상자산입니다. 법이 정한 정의와 제외 대상, NFT가 가상자산이 되는 기준, 스테이블코인·게임 아이템·포인트·토큰증권의 구분을 법령 기준으로 정리했습니다.",
+    date: "2026-10-16",
+    category: "세금",
+  },
+  {
     slug: "nts-crypto-tax-notice-november-2026",
     title: "국세청 \"가상자산 과세 고시 11월 준비\" — 국정감사에서 나온 과세 기준 발언 정리",
     description:
